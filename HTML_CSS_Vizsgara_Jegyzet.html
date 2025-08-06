@@ -69,7 +69,7 @@ Jelölőnyelv, nem programozási nyelv</li>
 </ul></td>
     <td>
 <ul>
-<li>!DOCTYPE html> → HTML5 dokumentum: a jelenlegi szabvány - legfrissebb- html nyelv dokumentum típusának meghatározása</li>
+<li>!DOCTYPE html> → HTML5 nyelv dokumentum típusának meghatározása: a jelenlegi szabvány</li>
 <li>html> → a teljes oldal</li>
 <li>head> → metaadatok (cím, karakterkódolás, linkek)</li>
 
@@ -121,7 +121,7 @@ Jelölőnyelv, nem programozási nyelv</li>
      <p style="text-align: left; font-weight: bold;">Listák</p>
   <p>Rendezetlen(számozatlan) lista: </p>
 
-  <ul>
+  <ul style="list-style-type: disc;">
     <li>HTML</li>
     <li>CSS</li>
     <li>JavaScript</li>
@@ -163,6 +163,10 @@ Jelölőnyelv, nem programozási nyelv</li>
   </select>
   <br><br>
 
+   <!-- Üzenet -->
+    <label for="uzenet">Üzenet:</label>
+  <textarea id="uzenet" name="uzenet" rows="4"></textarea>
+
   <!-- Jelölőnégyzet -->
   <label><input type="checkbox" name="hirlevel"> Feliratkozom a hírlevélre</label>
   <br><br>
@@ -175,9 +179,7 @@ Jelölőnyelv, nem programozási nyelv</li>
 
 <h2>CSS</h2>
 
-<h3>Alapvető szövegformázások</h3>
-<p style="color: red;">Szöveg színe</p>
-<p style="background-color: yellow;">Háttérszín</p>
+<p style="text-decoration: underline; font-weight: bold;">Alapvető szövegformázások</p>
 <p style="font-size: 20px;">Betűméret (px / em / rem)</p>
 <p style="font-weight: bold;">Félkövér szöveg</p>
 <p style="font-style: italic;">Dőlt szöveg</p>
@@ -188,6 +190,28 @@ Jelölőnyelv, nem programozási nyelv</li>
 <p style="line-height: 2;">Sorköz beállítása</p>
 <p style="letter-spacing: 3px;">Betűköz beállítása</p>
 <p style="word-spacing: 10px;">Szóköz beállítása</p>
+<p style="white-space: nowrap;">Sortoreskikapcsolo</p>
+<p style="text-indent: 20px;">Első sori behúzás</p>
+<p style="font-family: 'Times New Roman', Times, serif;">Betűstílus</p>
+
+
+<p style="text-decoration: underline; font-weight: bold;">Border - Szegély-Elem széle</p>
+<p>Left-Top-Right-Botton</p>
+<p style="border: 5px dashed red; border-radius: 12px; text-align: center;">Lekerekítés</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Padding - eltartás (belső távolság/belső margó/bélés)</p>
+<p>A padding segítségével meghatározhatjuk a tartalom és a div elem széle(border), közötti távolságot</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Margin- külső távolság</p>
+<p>Margó - A margin segítségével meghatározhatjuk a div elemek közötti távolságot, valamint az oldal szélétől való távolságát is az elemnek.</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Outline - külső szegély elem</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Pozíció:</p>
+<p>static, relative=>fixed, absolute, sticky. Float => clear:both</p>
+<p style="text-decoration: underline; font-weight: bold;">Linkek:</p>
+<p>a:link, a:visited, a:hover...</p>
+
  </details>
 
 
@@ -214,6 +238,20 @@ Jelölőnyelv, nem programozási nyelv</li>
 
 <h2>Szerver</h2>
 <h2>GitHub</h2>
+<ol>
+<p style="text-decoration: underline; font-weight: bold;"> Feltöltés:</p>
+<li>Változások hozzáadása
+git add .</li>
+
+<li>Commit készítése
+git commit -m "Üzenet a változásról"</li>
+
+<li>Feltöltés GitHubra
+git push -u origin main</li>
+
+<li>Következő push-hoz már elég csak:
+git push</li>
+</ol>
 
 </div>
 </body>
