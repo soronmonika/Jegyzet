@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML /CSS Jegyzet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f4f4f4;
+      background-color: rgb(147, 177, 147);
+    }
+    h2{
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    h3{
+      color: gray;
+    }
+    .code-example {
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table, tr, th, td{
+       border: 2px  solid  black;
+    }
+
+  </style>
+</head>
+<body>
+<div style="width: 1000px; margin: 0px auto;">
+ <details>
+   <h1 style="text-transform: uppercase;">Jegyzet</h1>
+
+   <summary>Elrejt HTML/CSS</summary>
+<h2>1. HTML</h2>
+
+<p style="text-align: left; font-weight: bold;"><b>Elmélet</b></p>
+
+<table>
+  <tr>
+      <th>1. Mi a HTML?</th>
+      <th>alapstruktúrája</th>
+  </tr>
+  <tr>
+    <td><ul>
+<li>  HyperText Markup Language rövidítése</li>
+
+<li>Weboldalak szerkezetének leírására szolgál</li>
+<li>
+Jelölőnyelv, nem programozási nyelv</li>
+
+<li>A böngészők értelmezik és megjelenítik</li>
+
+</ul></td>
+    <td>
+<ul>
+<li>!DOCTYPE html> → HTML5 dokumentum: a jelenlegi szabvány - legfrissebb- html nyelv dokumentum típusának meghatározása</li>
+<li>html> → a teljes oldal</li>
+<li>head> → metaadatok (cím, karakterkódolás, linkek)</li>
+
+<li>body> → látható tartalom</li>
+<li>tag/elem(hivatkozás): pl.: p</li>
+<li>attribútom(neve): tag>tulajdonság(neve)="attribútom értéke: "https://google.com" ">Tartalom< /tag>: href, src, alt, target....</li>
+
+</ul>
+
+</table>
+
+<link rel="stylesheet" href="">
+<a href="" target=""></a>
+
+  <h4>Formázás:</h4>
+<ul>
+<li>kozepre {text-align: center;} display: inline-block; margin: 0px auto; vertical-align: center;width: 80%;</li>
+<li>  sorkizart,középre,jobbra,balra {text-align: justify;}</li>
+<li>  sorkizart {text-align: justify;}  border-collapse: collapse;- szegély eltüntetése</li>
+
+<p style="text-align: left; font-weight: bold;"><b>Táblázat</b></p>
+</ul>
+    <table  style="font-weight: bold;">
+        <caption>Egyszerű táblázat - CÍM</caption>
+        <tr>
+            <th>Oszlop 01</th>
+            <th>Oszlop 02</th>
+            <th>Oszlop 03</th>
+            <th>Oszlop 04</th>
+        </tr>
+        <tr >
+            <td colspan="2">1/1: colspan</td>
+            <td>1/2</td>
+            <td>1/3</td>
+        </tr>
+        <tr>
+            <td rowspan="2">2/1:rowspan</td>
+            <td>2/2</td>
+            <td>2/3</td>
+            <td>2/4</td>
+        </tr>
+        <tr>
+            <td>3/1</td>
+            <td>3/2</td>
+            <td>3/3</td>
+        </tr>
+    </table>
+
+     <p style="text-align: left; font-weight: bold;">Listák</p>
+  <p>Rendezetlen(számozatlan) lista: </p>
+
+  <ul>
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+
+  <p>Rendezett(számozott) lista:</p>
+  <ol>
+    <li>Első lépés</li>
+    <li>Második lépés</li>
+    <li>Harmadik lépés</li>
+  </ol>
+  <p>Lista: type=I; leíró(description) lista: dl, dt, dd(az elemek számozás nélkül, jelekekkel vannak csak megkülönböztetve)</p>
+
+
+  <p style="text-align: left; font-weight: bold;">Űrlap</p>
+
+<form action="#" method="post">
+  <!-- Név mező -->
+  <label for="nev">Név:</label>
+  <input type="text" id="nev" name="nev" required>
+  <br><br>
+
+  <!-- E-mail mező -->
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required>
+  <br><br>
+
+  <!-- Jelszó mező -->
+  <label for="jelszo">Jelszó:</label>
+  <input type="password" id="jelszo" name="jelszo">
+  <br><br>
+
+  <!-- Legördülő lista -->
+  <label for="orszag">Ország:</label>
+  <select id="orszag" name="orszag">
+    <option value="hu">Magyarország</option>
+    <option value="de">Németország</option>
+    <option value="us">USA</option>
+  </select>
+  <br><br>
+
+  <!-- Jelölőnégyzet -->
+  <label><input type="checkbox" name="hirlevel"> Feliratkozom a hírlevélre</label>
+  <br><br>
+
+  <!-- Gomb -->
+  <input type="submit" value="Küldés">
+</form>
+
+
+
+<h2>CSS</h2>
+
+<h3>Alapvető szövegformázások</h3>
+<p style="color: red;">Szöveg színe</p>
+<p style="background-color: yellow;">Háttérszín</p>
+<p style="font-size: 20px;">Betűméret (px / em / rem)</p>
+<p style="font-weight: bold;">Félkövér szöveg</p>
+<p style="font-style: italic;">Dőlt szöveg</p>
+<p style="text-align: center;">Középre igazított szöveg</p>
+<p style="text-transform: uppercase;">Nagybetűs szöveg</p>
+<p style="text-decoration: underline;">Aláhúzott szöveg</p>
+<p style="text-decoration: line-through;">Áthúzott szöveg</p>
+<p style="line-height: 2;">Sorköz beállítása</p>
+<p style="letter-spacing: 3px;">Betűköz beállítása</p>
+<p style="word-spacing: 10px;">Szóköz beállítása</p>
+ </details>
+
+
+
+ <details>
+  <summary>Elrejt Bootstrap</summary>
+  <h2>Bootstrap</h2></details>
+ </details>
+
+
+  <details>
+    <summary>Elrejt JavaScript</summary>
+    <h2>JavaScript</h2>
+  </details>
+
+<details>
+<summary>Elrejt TypeScript</summary>
+  <h2>TypeScript</h2>
+</details>
+<details>
+  <summary>Elrejt Angular</summary>
+  <h2>Angular</h2>
+</details>
+
+<h2>Szerver</h2>
+<h2>GitHub</h2>
+
+</div>
+</body>
+</html>
