@@ -233,6 +233,14 @@ Jelölőnyelv, nem programozási nyelv</li>
  <details>
   <summary>Elrejt Bootstrap</summary>
   <h2>Bootstrap</h2>
+
+
+<ul class="nav">
+<li class="nav-item">
+  <a class="nav-link" href="#urlap">Űrlap</a>
+</li>
+</ul>
+
   <p class="cim">Rács:</p>
   <div class="container">
   <div class="row justify-content-center">
@@ -242,17 +250,17 @@ Jelölőnyelv, nem programozási nyelv</li>
   </div>
 </div>
 
-  <p class="cim">Táblázat:</p>
+  <p class="cim" id="tablazat">Táblázat:</p>
 
 <table class="table table-sm table-hover table-striped table-success text-center">
   <thead class="table table-dark">
     <tr><th>#</th><th>sor</th><th>színe</th></tr>
   </thead>
   <tbody>
-    <tr><td>1</td><td>table-primary</td><td>sötét kék</td></tr>
-    <tr><td>2</td><td>table-succes</td><td>zöld</td></tr>
-    <tr><td>3</td><td>table-secondary</td><td>szürke</td></tr>
-    <tr><td>4</td><td>Cellák tartalma függőlegesen középre igaítása:</td><td><code>align-middle</code></td></tr>
+    <tr class="table-primary"><td>1</td><td>table-primary</td><td>sötét kék</td></tr>
+    <tr class="table-succes"><td>2</td><td>table-succes</td><td>zöld</td></tr>
+    <tr class="table-secondary"><td>3</td><td>table-secondary</td><td>szürke</td></tr>
+    <tr class="table-danger"><td>4</td><td>Cellák tartalma függőlegesen középre igaítása:</td><td><code>align-middle</code></td></tr>
   </tbody>
 </table>
 
@@ -264,6 +272,44 @@ Jelölőnyelv, nem programozási nyelv</li>
   <li>mx-auto</li>
   <li>py-5</li>
 </ul>
+
+
+
+<p class="cim">Szöveg szerkesztés:</p>
+
+<ul>
+  <li><code>text-center</code></li>
+  <li><code>text-capitalire</code>: első betű</li>
+  <li><code>text-lowercase</code>: kisbetű</li>
+  <li><code>fw-bold</code>: félkövér</li>
+  <li><code>fst-italic</code>: dőlt</li>
+  <li><code>text-info</code>: kékes</li>
+  <li><code>text-moted</code>: halványított</li>
+</ul>
+
+
+<h2 id="urlap">Űrlap</h2>
+<p class="cim" >Űrlap</p>
+<form action="">
+  <label for="Nev" id="Nev">Név</label>
+  <input type="text" name="Nev" id="Nev" class="form-control">
+        <div class="invalid-feedback">Hibás</div>
+        <div class="valid-feedback">Megfelel</div>
+
+  <label for="tanf">Tanfolyam típusa</label>
+  <select name="tanf" id="tanf" class="form-control">
+    <option>Junior frontend fejlesztő</option>
+    <option>Webfejlesztő</option>
+  </select>
+
+  <div class="form-check">
+    <input type="checkbox" class="form-check-inpt" name="szabaly" id="szabaly">
+    <label for="check" class="form-check-label" name="szabaly">Vizsga szabályzat</label>
+    <textarea style="width: 500px;" class="form-control" rows="3"  name="szabaly" id="szabaly">Megjegyzés...</textarea>
+  </div>
+
+  <button class="form-control btn btn btn-success w-100 mt-3">Küldés</button>
+</form>
 
 </details>
 
