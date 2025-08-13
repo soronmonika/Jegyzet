@@ -327,31 +327,67 @@ Jelölőnyelv, nem programozási nyelv</li>
     <summary>Elrejt JavaScript</summary>
     <h2>JavaScript</h2>
 
-  <p class="cim">Képletek:</p>
-  <br>
-    function <b>KockaTerfogat</b>(a){
-      return a*a*a
-    }
-  <br>
-    function <b>KockaFelszin</b>(aOldal){
-  return 6*aOldal*aOldal;
-}
+<table>
 
-<br>
-function <b>TeglalapTerulet(aOldal,bOldal)</b>{
-  return aOldal*bOldal;
-}
+    <tr>
+      <th>Képletek függvénnyel:</th>
+      <th>Képletek függvénnyel:</th>
+    </tr>
+      <tr>
+    <td>  <pre><b>KockaTerfogat</b>(aOldal){return aOldal*aOldal*aOldal;}
+<b>KockaFelszin</b>(aOldal){return 6*aOldal*aOldal;}
+<b>TeglalapTerulet</b>(aOldal,bOldal){return aOldal*bOldal;}
+<b>TeglalapKerulet</b>(aOldal,bOldal){return 2*(aOldal+bOldal);}
+<b>NegyzetTerulet</b>(aOldal){return aOldal*aOldal;}
+<b>NegyzetKerulet</b>(aOldal){return aOldal*4;}</pre>
+</td>
+  <td>
 
-funtion TeglalapKerulet(aOldal,bOldal){
-  return 2*(aOldal+bOldal);
-}
+  </td>
+  </tr>
 
-<br>
+</table>
 
-function
+      <p style="text-decoration: underline; font-weight: bold;">Összegzés tétele</p>
+<pre><code>function osszegAlapAtlag(vizsgalt_tomb){
+  let osszeg=0;
+  for(let i=0; i $lt; vizsgalt_tomb.length; i++){
+    if(vizsgalt_tomb[i].ar $lt; 100000 && vizsgalt_tomb[i].kategoria=="elektronika")
+    osszeg+=vizsgalt_tomb[i];}
+  return osszeg/vizsgalt_tomb.length;}
+  </code></pre>
+    <p style="text-decoration: underline; font-weight: bold;">Maximumkeresés tétele</p>
+<pre><code>function MaxKerTe(vizsgalt_tomb){
+  let maxErtek=vizsgalt_tomb[0];
+  for(let i=1; i$lt;vizsgalt_tomb.length; i++){
+    if(vizsgalt_tomb[i]>maxErtek){
+      maxErtek=vizsgalt_tomb[i];}}
+  return maxErtek;}
+</code></pre>
+<p style="text-decoration: underline; font-weight: bold;">Maximumkeresés indexe</p>
+<pre><code>function MaxKerTe(vizsgalt_tomb){
+  let maxIndex=0;
+  for(let i=1; $lt;vizsgalt_tomb.length; i++){
+    if(vizsgalt_tomb[i]>vizsgalt_tomb[maxIndex]){
+      maxIndex=i;}}
+  return maxIndex;}</code></pre>
 
-  </pre>
-
+<p style="text-decoration: underline; font-weight: bold;">Maximumkeresés indexe</p>
+<pre><code> const emberek = [
+  { nev: "Anna", kor: 25 },
+  { nev: "Béla", kor: 32 },
+  { nev: "Csaba", kor: 29 }
+];
+function legIdosebbEmberIndex(vizsgalt_tomb){
+  let legidosebbIndex=0;
+  for(let i=0; i$lt;vizsgalt_tomb.length; i++){
+    if(vizsgalt_tomb[i].kor>vizsgalt_tomb[legidosebbIndex].kor){
+      legidosebbIndex=i;}}
+  return legidosebbIndex;}
+function legIdosebbEmberKiir(indexErtek){
+  document.write("A legidősebb ember neve: "+ emberek[indexErtek].nev);}
+legIdosebbEmberKiir(legIdosebbEmberIndex(emberek));
+</code></pre>
 
   </details>
 
