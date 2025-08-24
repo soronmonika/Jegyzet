@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jegyzet</title>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f4f4f4;
+      background-color: rgb(147, 177, 147);
+    }
+    h2{
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    h3{
+      color: gray;
+    }
+    .code-example {
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table, tr, th, td{
+       border: 2px  solid  black;
+    }
+    .cim{
+      text-align: left;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+<div style="width: 1000px; margin: 0px auto;">
+ <details>
+   <h1 style="text-transform: uppercase;">Jegyzet</h1>
+
+   <summary>HTML/CSS</summary>
+<h2>1. HTML</h2>
+
+<p class="cim"><b>Elmélet:</b></p>
+
+<table>
+  <tr>
+      <th>1. Mi a HTML?</th>
+      <th>alapstruktúrája</th>
+  </tr>
+  <tr>
+    <td><ul>
+<li>  HyperText Markup Language rövidítése</li>
+
+<li>Weboldalak szerkezetének leírására szolgál</li>
+<li>
+Jelölőnyelv, nem programozási nyelv</li>
+
+<li>A böngészők értelmezik és megjelenítik</li>
+
+</ul></td>
+    <td>
+<ul>
+<li>!DOCTYPE html> → HTML5 nyelv dokumentum típusának meghatározása: a jelenlegi szabvány</li>
+<li>html> → a teljes oldal</li>
+<li>head> → metaadatok (cím, karakterkódolás, linkek)</li>
+
+<li>body> → látható tartalom</li>
+<li>tag/elem(hivatkozás): pl.: p</li>
+<li>attribútom(neve): tag>tulajdonság(neve)="attribútom értéke: "https://google.com" ">Tartalom< /tag>: href, src, alt, target....</li>
+
+</ul>
+
+</table>
+
+<link rel="stylesheet" href="">
+<a href="" target=""></a>
+
+  <p class="cim">Formázás:</p>
+<ul>
+<li>kozepre {text-align: center;} display: inline-block; margin: 0px auto; vertical-align: center;width: 80%;</li>
+<li>  sorkizart,középre,jobbra,balra {text-align: justify;}</li>
+<li>  sorkizart {text-align: justify;}  border-collapse: collapse;- szegély eltüntetése</li>
+
+<p class="cim"><b>Táblázat</b></p>
+</ul>
+    <table  style="font-weight: bold;">
+        <caption>Egyszerű táblázat - CÍM</caption>
+        <tr>
+            <th>Oszlop 01</th>
+            <th>Beépített függvények</th>
+            <th>Oszlop 03</th>
+            <th>Oszlop 04</th>
+        </tr>
+        <tr >
+            <td colspan="2">1/1: colspan</td>
+            <td>Hatvány: <code>Math.pow()</code></td>
+            <td>Gyökvonás: <code> Math.Swrt()</code></td>
+        </tr>
+        <tr>
+            <td rowspan="2">2/1:rowspan</td>
+            <td>Lefelé kerekítés: <code>Math.floor()</code></td>
+            <td>2/3</td>
+            <td>2/4</td>
+        </tr>
+        <tr>
+            <td>3/1</td>
+            <td>3/2</td>
+            <td>3/3</td>
+        </tr>
+    </table>
+
+     <p class="cim">Listák</p>
+  <p>Rendezetlen(számozatlan) lista: </p>
+
+  <ul style="list-style-type: disc;">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+
+  <p>Rendezett(számozott) lista:</p>
+  <ol>
+    <li>Első lépés</li>
+    <li>Második lépés</li>
+    <li>Harmadik lépés</li>
+  </ol>
+  <p>Lista: type=I; leíró(description) lista: dl, dt, dd(az elemek számozás nélkül, jelekekkel vannak csak megkülönböztetve)</p>
+
+
+  <p class="cim">Űrlap</p>
+
+<form action="#" method="post">
+  <!-- Név mező -->
+  <label for="nev">Név:</label>
+  <input type="text" id="nev" name="nev" required>
+  <br><br>
+
+  <!-- E-mail mező -->
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required>
+  <br><br>
+
+  <!-- Jelszó mező -->
+  <label for="jelszo">Jelszó:</label>
+  <input type="password" id="jelszo" name="jelszo">
+  <br><br>
+
+  <!-- Legördülő lista -->
+  <label for="orszag">Ország:</label>
+  <select id="orszag" name="orszag">
+    <option value="hu">Magyarország</option>
+    <option value="de">Németország</option>
+    <option value="us">USA</option>
+  </select>
+  <br><br>
+
+   <!-- Üzenet -->
+    <label for="uzenet">Üzenet:</label>
+  <textarea id="uzenet" name="uzenet" rows="4"></textarea>
+
+  <!-- Jelölőnégyzet -->
+  <label><input type="checkbox" name="hirlevel"> Feliratkozom a hírlevélre</label>
+  <br><br>
+
+  <!-- Gomb -->
+  <input type="submit" value="Küldés">
+</form>
+
+
+
+<h2>CSS</h2>
+
+<p class="cim">Alapvető szövegformázások</p>
+<p style="font-size: 20px;">Betűméret (px / em / rem)</p>
+<p style="font-weight: bold;">Félkövér szöveg</p>
+<p style="font-style: italic;">Dőlt szöveg</p>
+<p style="text-align: center;">Középre igazított szöveg</p>
+<p style="text-transform: uppercase;">Nagybetűs szöveg</p>
+<p style="text-decoration: underline;">Aláhúzott szöveg</p>
+<p style="text-decoration: line-through;">Áthúzott szöveg</p>
+<p style="line-height: 2;">Sorköz beállítása</p>
+<p style="letter-spacing: 3px;">Betűköz beállítása</p>
+<p style="word-spacing: 10px;">Szóköz beállítása</p>
+<p style="white-space: nowrap;">Sortoreskikapcsolo</p>
+<p style="text-indent: 20px;">Első sori behúzás</p>
+<p style="font-family: 'Times New Roman', Times, serif;">Betűstílus</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Border - Szegély-Elem széle</p>
+<p>Left-Top-Right-Botton</p>
+<p style="border: 5px dashed red; border-radius: 12px; text-align: center;">Lekerekítés</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Padding - eltartás (belső távolság/belső margó/bélés)</p>
+<p>A padding segítségével meghatározhatjuk a tartalom és a div elem széle(border), közötti távolságot</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Margin- külső távolság</p>
+<p>Margó - A margin segítségével meghatározhatjuk a div elemek közötti távolságot, valamint az oldal szélétől való távolságát is az elemnek.</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Outline - külső szegély elem</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Pozíció:</p>
+<p>static, relative=>fixed, absolute, sticky. Float => clear:both</p>
+<p style="text-decoration: underline; font-weight: bold;">Linkek:</p>
+<p>a:link, a:visited, a:hover...</p>
+<p>Elrejtés: display:none/helyét megtartani: visibility:hidden</p>
+<p style="text-decoration: underline; font-weight: bold;">Méretek:</p>
+<p>Abszolút: px</p><p>Relatív: em(20px),rem(16px),%, vh,vw(weboldaltól függ)</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Animálás:</p>
+<p>@keyframes – Meghatározza, hogy időben hogyan változik az elem stílusa.</p>
+<p>animation tulajdonság – Az animáció nevét, idejét és viselkedését adja meg.</p>
+
+
+ </details>
+
+
+
+ <details>
+  <summary>Bootstrap</summary>
+  <h2>Bootstrap</h2>
+
+
+<ul class="nav">
+<li class="nav-item">
+  <a class="nav-link" href="#urlap">Űrlap navigációs sáv</a>
+</li>
+</ul>
+
+  <p class="cim">Rács:</p>
+  <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-lg-4 col-md-6 col-12"><code>col-lg-4(3) col-md-6(2) col-12(1)</code></div>
+    <div class="col-lg-4 col-md-6 col-12">középre: <code>mx-auto</code> <code>d-block</code></div>
+    <div class="col-lg-4 col-md-6 col-12">id(#keret{})||class=.keret{}</div>
+    <div class="col-lg-4 col-md-6 col-12">xs-576px|| col-egyenlő rész</div>
+  </div>
+</div>
+
+  <p class="cim" id="tablazat">Táblázat:</p>
+
+<table class="table table-sm table-hover table-striped table-success text-center">
+  <thead class="table table-dark">
+    <tr><td>#</td><td>sor</td><td>színe</td></tr>
+  </thead>
+  <tbody>
+    <tr class="table-primary"><td>1</td><td>table-primary</td><td>sötét kék</td></tr>
+    <tr class="table-succes"><td>2</td><td>table-succes</td><td>zöld</td></tr>
+    <tr class="table-secondary"><td>3</td><td>table-secondary</td><td>szürke</td></tr>
+    <tr class="table-danger"><td>4</td><td>Cellák tartalma függőlegesen középre igaítása:</td><td><code>align-middle</code></td></tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td>lábléc</td>
+      <td>1</td>
+    </tr>
+  </tfoot>
+</table>
+
+
+  <p class="cim">Térközök kezelése:</p>
+<ul>
+  <li>mt: 1(0.25=4px)</li>
+  <li>pb: 5(3rem=48px)</li>
+  <li>mx-auto</li>
+  <li>py-5</li>
+</ul>
+
+
+
+<p class="cim">Szöveg szerkesztés:</p>
+
+<ul>
+  <li><code>text-center</code></li>
+  <li><code>text-capitalire</code>: első betű</li>
+  <li><code>text-lowercase</code>: kisbetű</li>
+  <li><code>fw-bold</code>: félkövér</li>
+  <li><code>fst-italic</code>: dőlt</li>
+  <li><code>text-info</code>: kékes</li>
+  <li><code>text-muted</code>: halványított</li>
+</ul>
+
+
+<h2 id="urlap">Űrlap</h2>
+<p class="cim" >Űrlap</p>
+<form action="">
+  <label for="Nev" id="Nev">Név</label>
+  <input type="text" name="Nev" id="Nev" class="form-control">
+        <div class="invalid-feedback">Hibás</div>
+        <div class="valid-feedback">Megfelel</div>
+
+  <label for="tanf">Tanfolyam típusa</label>
+  <select name="tanf" id="tanf" class="form-control">
+    <option>Junior frontend fejlesztő</option>
+    <option>Webfejlesztő</option>
+  </select>
+
+  <div class="form-check">
+    <input type="checkbox" class="form-check-inpt" name="szabaly" id="szabaly">
+    <label for="check" class="form-check-label" name="szabaly">Vizsga szabályzat</label>
+    <textarea style="width: 500px;" class="form-control" rows="3"  name="szabaly" id="szabaly">Megjegyzés...</textarea>
+  </div>
+
+  <button class="form-control btn btn btn-success w-100 mt-3">Küldés</button>
+</form>
+
+</details>
+
+
+
+
+
+  <details>
+    <summary>JavaScript</summary>
+    <h2>JavaScript</h2>
+
+<ul>
+  <li>A JS dinamikus, gyengés típusos(nem kell megadni a típust) és főleg kliens oldali programozás nyelv. </li>
+  <li>függvény paraméter:az érték, amivel a függvény dolgozik futása során, </li>
+  <li>vezérlési szerkezetek: szekvencia: sorban egymás után || Szelekció: elágazás: egyszerű,összetett, több irányú && Iteráció: ciklus  </li>
+  <li>változó (létrehozása)deklarálás: változót létrehozunk majd értéket adunk--gyengén típusos--maga dönti el milyen típus. const: nem lehet változtatni. | var: veszélyes, bármikor újra feklarárható.</li>
+  <li>for ciklus: (<=) operátor 1-gyel több lefutást eredményez|| while(előltesztelós), Do-while(hátultesztelős), for(előírt lépésszámú)</li>
+</ul>
+
+<table>
+    <tr>
+      <th>Képletek függvénnyel:</th>
+      <th>Képletek függvénnyel:</th>
+    </tr>
+      <tr>
+    <td>  <pre><b>KockaTerfogat</b>(aOldal){return aOldal*aOldal*aOldal;}
+<b>KockaFelszin</b>(aOldal){return 6*aOldal*aOldal;}
+<b>TeglalapTerulet</b>(aOldal,bOldal){return aOldal*bOldal;}
+<b>TeglalapKerulet</b>(aOldal,bOldal){return 2*(aOldal+bOldal);}
+<b>NegyzetTerulet</b>(aOldal){return aOldal*aOldal;}
+<b>NegyzetKerulet</b>(aOldal){return aOldal*4;}</pre>
+</td>
+  <td>
+<pre><b>Hatvany:</b> return Math.pow // szam**hatvanyozo(6<sup>3</sup>);
+<b>számtani sorozat:</b> (a-b==b-c); <b>szerkeszthető háromszög:</b> (a + b > c && b + c > a && c + a > b);
+<b>TeglaTestFelszinTerfogat</b>(a,b,c){let felszin=2*(a*b+a*c+c*b),terfogat=a*b*c}
+<b>osztokSzama:</b> if(vizsgaltSzam%i==0){osztokszama+=1;};
+  </pre>
+  </td>
+  </tr>
+
+</table>
+<p class="cim">Összegzés tétele</p>
+<pre><code>function osszegAlapAtlag(vizsgalt_tomb){
+  let osszeg=0;
+  for(let i(ciklusváltozó)=0; i $lt; vizsgalt_tomb.length; i++){
+    if(vizsgalt_tomb[i].ar > 100000 && vizsgalt_tomb[i].kategoria=="elektronika")
+    osszeg+=vizsgalt_tomb[i];}
+  return osszeg/vizsgalt_tomb.length;}
+  </code></pre>
+    <p class="cim">Maximumkeresés tétele</p><pre><code>function MaxKerTe(vizsgalt_tomb){
+  let maxErtek=vizsgalt_tomb[0](0);
+  for(let i=1; i$lt;vizsgalt_tomb.length; i++){
+    if((&& ||)vizsgalt_tomb[i]>maxErtek((tomb[i]>tomb[maxIndex]]))){
+      maxErtek=vizsgalt_tomb[i](maxIndex=i);}}
+  return maxErtek;}
+</code></pre>
+<p class="cim">Maximumkeresés indexe</p>
+<pre><code> const emberek = [
+  { nev: "Anna", kor: 25 },
+  { nev: "Béla", kor: 32 },
+  { nev: "Csaba", kor: 29 }];
+function legIdosebbEmberIndex(vizsgalt_tomb){
+  let legidosebbIndex=0;
+  for(let i=0; i$lt;vizsgalt_tomb.length; i++){
+    if(vizsgalt_tomb[i].kor>vizsgalt_tomb[legidosebbIndex].kor){
+      legidosebbIndex=i;}}
+  return legidosebbIndex;}
+function legIdosebbEmberKiir(indexErtek){
+  document.write("A legidősebb ember neve: "+ emberek[indexErtek].nev);}
+legIdosebbEmberKiir(legIdosebbEmberIndex(emberek));
+function <b>NyugdijigHatralevoIdo</b>(vizsgaltTomb, vizsgaltSzemely) {
+    return 65 - vizsgaltTomb[vizsgaltSzemely].kor;}</code></pre>
+
+<pre><code>function <b>ErtekCsokkentes</b>(vizsgalt_tomb, AutoIndexe){
+vizsgalt_tomb[AutoIndexe].ar-=200000;}
+function ErtekCsokkentesKiir(AutoIndexe){
+document.write(`A legöregebb autó csökkentett ára: `+Autok[AutoIndexe].ar);}
+let ErtekCsokkentesIndex=LegoregebbAuto(Autok);
+ErtekCsokkentes(Autok, ErtekCsokkentesIndex);
+ErtekCsokkentesKiir(ErtekCsokkentesIndex);</code></pre>
+
+<p class="cim">Megszámlálás tétele:</p>
+<pre><code>function MegSzamlalas(vizsgaltTomb){
+      let darab=0;
+      for(let i=0; i$lt;vizsgaltTomb.length;i++){
+        if(vizsgalt_tomb[i]%2==0){
+          darab++; }}
+      return darab,}</code></pre>
+
+<p class="cim">Kiválogatás tétele:</p>
+<pre><code>function Kivalogatas(vizsgalt_tomb){
+      let kivalogatottak=[];
+      for(let i=0; i$lt;vizsgalt_tomb.length){
+        if(vizsgalt_tomb[i]>0){
+          kivalogatottak.push(vizsgalt_tomb[i])}}
+      return kivalogatottak;}</code></pre>
+<p class="cim">Egyszerű kiíratás:</p>
+<pre><code>function TombKiir(tomb) {
+    document.write("Tömb tartalma:");
+    for (let i = 0; i $lt;tomb.length; i++){
+                document.write(csakElektronika[i].nev + " - " + csakElektronika[i].ar + " Ft<br>");}}</code></pre>
+
+ <p class="cim">Válogasd ki azokat, akiknek minden jegye 4 vagy 5.</p>
+<pre><code>function TanulokJegyei(vizsgalt_tomb){
+  let tanulokTomb = [];
+  for (let i = 0; i i$lt vizsgalt_tomb.length; i++) {
+    let mindenJo = true;
+    // >>> a JEGYEK hosszát járjuk be, nem a tanulókét
+    for (let j = 0; j i$lt vizsgalt_tomb[i].jegyek.length; j++) {
+      const jegy = vizsgalt_tomb[i].jegyek[j];
+      if (jegy !== 4 && jegy !== 5) {
+        mindenJo = false;
+        break;}}
+    if (mindenJo) {
+      tanulokTomb.push(vizsgalt_tomb[i]);}}
+  return tanulokTomb;}
+</code></pre>
+
+<pre><code>function <b>RandomSzam</b>(hatar_egy, hatar_ketto) {
+    if (hatar_egy (kisebb) hatar_ketto) {
+        var alsoHatar = hatar_egy;
+        var felsoHatar = hatar_ketto;}
+    else {
+        var alsoHatar = hatar_ketto;
+        var felsoHatar = hatar_egy;}
+    let randomSzam = Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar;
+    return randomSzam;}</code></pre>
+
+<pre><code>function <b>RandomSzamtombGenerator</b>(hossz, alsoHatar, felsoHatar) {
+    let generaltTomb = [];
+    for (let i = 0; i < hossz; i++) {
+        let randomSzam = Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar;
+        generaltTomb.push(randomSzam);}
+    return generaltTomb;}</code></pre>
+
+<pre><code>function <b>SzamtaniSorozatGenerator</b>(hossz, kezdoErtek, kulonbseg) {
+    let generaltSorozat = [];
+    for (let i = 0; i < hossz; i++) {
+        generaltSorozat.push(kezdoErtek);
+        kezdoErtek = kezdoErtek + kulonbseg;}
+    return generaltSorozat;}</code></pre>
+
+<pre><code>function <b>PrimE</b>(vizsgalt_szam) {
+    let osztok_szama = 0;
+    for (let i = 1; i <= vizsgalt_szam; i++) {
+        if (vizsgalt_szam % i == 0) {
+            osztok_szama++;}}
+    if (osztok_szama == 2) {
+            return vizsgalt_szam+ " Prím szám";}
+    //Else ág elhagyható helyette lehet simán "return false;" is!
+    else {
+        return vizsgalt_szam + " Nem prím"}}</code></pre>
+
+<pre><code></code>function <b>PrimEtomb</b>(vizsgaltTomb) {
+  for (let i = 0; i < vizsgaltTomb.length; i++) {
+    let osztoSzam = 0;
+    for (let j = 1; j <= vizsgaltTomb[i]; j++)
+      if (vizsgaltTomb[i] % j == 0) {
+        osztoSzam++;}}
+        if (osztoSzam == 2) {
+      document.write(vizsgaltTomb[i] + " → Prím szám<br>");
+      // primSzamok.push(vizsgaltTomb[i]); // csak a prím kerül a tömbbe
+    } else {
+      document.write(vizsgaltTomb[i] + " → Nem prím szám<br>");}
+    function <b>PrimekSzama</b>(vizsgaltTomb){
+	let darab=0;
+    for(let i=0; ii$ltvizsgaltTomb.length; i++){
+    	if(PrimE(vizsgaltTomb[i])==true){
+    	darab++;}}
+    return darab;}}</code></pre>
+
+
+<pre><code> function <b>Jegyosztalyozas</b>(szam) {
+    if (szam <= 39) {
+        return "Elégtelen";}
+    else if (szam <= 59) {
+        return "Elégséges";}
+    else if (szam <= 74) {
+        return "Közepes";}
+    else if (szam <= 89) {
+        return "Jó";}
+    else if (szam <= 100) {
+        return "Jeles";}
+    else {return "Hibás adat";}}</code></pre>
+
+<pre><code>function <b>OsztoE</b>(vizsgalt_szam, osztok_szama) {
+        if (vizsgalt_szam % osztok_szama == 0) {
+        document.write(`A ${vizsgalt_szam} osztható`);}
+    else {
+        document.write(`A ${vizsgalt_szam} NEM osztható`);}}</code></pre>
+
+<pre><code>function <b>NegyzetSzamok</b>() {
+    for (let i = 1; i <= 10; i++) {
+        document.write(`${i * i},`);}}</code></pre>
+
+ <p class="cim">Szövegkezelő függvények:</p>
+<pre><code>function <b>KarakterMennyiseg</b>(szoveg, karakter) {
+    let karakterMennyiseg = 0;
+    for (let i = 0; i < szoveg.length; i++) {
+        if (szoveg[i] == karakter) {
+            karakterMennyiseg++;}}
+    return karakterMennyiseg;}</code></pre>
+<pre><code><b>nagy kezdőbetűs</b>function CapitalizeV3(szoveg) {
+    return szoveg[0].toUpperCase()(nagy betűs) + szoveg.slice(kivág egy rész a szövegből)(1, szoveg.length).toLowerCase()(kisbetűs);}</code></pre>
+
+<b>Capitalize függvény felhasználásával:</b>
+<pre><code>function <b>camelCaseSzoveg</b>(leirasSzoveg) {
+    let elemek = leirasSzoveg.split(" ");
+    let ujSzoveg = elemek[0].toLowerCase();
+    for (let i = 1; i < elemek.length; i++) {
+        ujSzoveg += Capitalize(elemek[i]);}
+    return ujSzoveg;}</code></pre>
+<pre><code>function <b>KarakterTabusito</b>(szoveg, betu) {
+    return szoveg.replaceAll(betu, "");}</code></pre>
+
+<pre><code>function <b>Szovegvisszafele</b>(szoveg) {//karakterekre bontja:split(","),tömbbé alakítja.megfordítja(reserve).újrafűzi(join): let forditottSzoveg="";
+ for(let i=szoveg.length-1; i>=0; i--){
+  forditottSzoveg+=szoveg[i]; }
+ return forditottSzoveg;}</code></pre>
+
+<main></main>
+
+<pre><code>function <b>L33tSz0v3gG3n3r4t0r</b>
+  (szoveg){return szoveg.toLowerCase().replaceAll("e", "3").replaceAll("é", "3")
+  .replaceAll("kicserel","ujSzovegre")("E", "3").replaceAll("É", "3").replaceAll("o", "0").replaceAll("ó", "0")
+  .replaceAll("O", "0").replaceAll("Ó", "0").replaceAll("a", "4")
+  .replaceAll("á", "4").replaceAll("A", "4").replaceAll("Á", "4")
+  .replaceAll("i", "1").replaceAll("I", "1").replaceAll("í", "1").replaceAll("Í", "1");}</code></pre>
+
+  <pre><code>function ElsoNSzamOsszege(szamokMennyisege){
+	let osszeg=0;
+    for(let i=1; i<=szamokMennyisege; i++){
+    	osszeg=osszeg+i}
+    return osszeg;}</code></pre>
+
+<pre><code>function <b>Csatlakozott2007</b>(univerzális)(vizsgaltTomb(,csatlakozasEve)) {
+  (let csatlakozottE=false;)
+    let csatlakozott2007(csatlakozottakSzama) = 0;
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        if (vizsgaltTomb[i].csatlakozas.includes("2007"(csatlakozasEve)(".05.")))//split, slice, includes
+            csatlakozott2007++(csatlakozottakSzama);(csatlakozottE=true;)}
+    return csatlakozott2007;(csatlakozottakSzama);(csatlakozottE)}</code></pre>
+
+<code><pre>function <b>UtolsoCsatlakozo</b>(vizsgaltTomb) {
+    let utolsoCsatlakozasDatum = vizsgaltTomb[0].csatlakozas.slice(0, 4);//alapnak kivágjuk az évet.
+    let orszagNeve = vizsgaltTomb[0].orszag;
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        if (vizsgaltTomb[i].csatlakozas.slice(0, 4) > utolsoCsatlakozasDatum) {
+            utolsoCsatlakozasDatum = vizsgaltTomb[i].csatlakozas.slice(0, 4);
+            orszagNeve = vizsgaltTomb[i].orszag;//akt.ország neve}}
+    return orszagNeve;</pre></code>
+
+<code><pre>function StatisztikaV2(vizsgaltTomb) {
+    let statisztika = [];
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        let szerepelE = false;
+        let aktEv = vizsgaltTomb[i].csatlakozas.slice(0, 4);
+        for (let j = 0; j < statisztika.length; j++) {
+            if (aktEv == statisztika[j].ev) {
+                szerepelE = true;
+                statisztika[j].darabSzam += 1;//Ha már szerepelt növelem az értékét}}
+        if (szerepelE == false) {
+            let ev = aktEv;
+            let darabSzam = 1;//Ha új elemet találok az érték egy lesz
+            let ujElem = { ev, darabSzam }
+            statisztika.push(ujElem);}}
+    statisztika.sort((a, b) => a.ev - b.ev);//Extra nem a feladat része a rendezés :)
+    return statisztika;}</pre></code>
+
+<p>Objektum feltöltő/táblázat készítő/megjelenítő</p>
+<script>    const csapatAdat = [
+    "Anglia;4;0;1662",
+    "Argentína;10;0;1614"];
+//Adatok beolvasása objektum típusú tömbbe:
+function ObjektumFeltolto(feltoltendoElem) {
+    const beolvasottAdatok = [];
+    for (let i = 0; i < feltoltendoElem.length; i++) {
+        let objektum = {};
+        let daraboltAdatSor = feltoltendoElem[i].split(";");
+        objektum.nev = daraboltAdatSor[0];
+        objektum.helyezes = Number(daraboltAdatSor[1])//.replace(",", ".");
+        objektum.valtozas = Number(daraboltAdatSor[2]);
+        objektum.pontszam = Number(daraboltAdatSor[3]);
+        beolvasottAdatok.push(objektum);
+    }
+    return beolvasottAdatok;
+}
+const fifaAdatok = ObjektumFeltolto(csapatAdat);
+//Konzol felületre kiíratása a létrehozott objektum típusú tömbnek
+console.log(fifaAdatok);
+
+//Táblázatban megjelenítése a létrehozott objektum típusú tömbnek
+function FifaAdatokKiir(megjelenitendoAdatok) {
+    document.write("<table border='1'><caption>fifaAdatok</caption>")
+    for (let i = 0; i < megjelenitendoAdatok.length; i++) {
+        document.write(`<tr><td>${megjelenitendoAdatok[i].nev}</td><td>${megjelenitendoAdatok[i].helyezes}</td><td>${megjelenitendoAdatok[i].valtozas}</td><td>${megjelenitendoAdatok[i].pontszam}</td></tr>`);
+    } document.write("</table>");
+}
+FifaAdatokKiir(fifaAdatok);</script>
+
+<pre><code>function <b>VizsgaEredmeny</b>(nev){
+    let osszPontSzam=0;
+    for(let i=0; i()vizsgazokAdatai(const vizsgazokAdatai=[]).length; i++){
+        if(vizsgazokAdatai[i].nev==nev){
+            osszPontSzam+=vizsgazokAdatai[i].htmlVizsgaresz+vizsgazokAdatai[i].bootstrapVizsgaresz+...}
+        return osszPontSzam;}}</code></pre>
+        <pre><code>function HianyosNev(vegpontNeve, pecsetInfo) {
+    if (pecsetInfo == "i" && vegpontNeve.includes("pecsetelohely") == false) {
+        return true;}
+    else {
+        return false;}}
+function <b>VanEHianyosNev</b>(vizsgaltTomb) {
+    let vanEHianyosAllomasNev = false;
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        if (HianyosNev(vizsgaltTomb[i].vegPont, vizsgaltTomb[i].pecsetelohelyE) == true) {
+            console.log(vizsgaltTomb[i].vegPont);
+            vanEHianyosAllomasNev = true;}}
+    return vanEHianyosAllomasNev;}</code></pre>
+<code><pre>function <b>LegrovidebbTuraszakasz</b>(vizsgaltTomb) {
+    let turaszakaszIndex = 0;
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        if (vizsgaltTomb[i].tavolsag < vizsgaltTomb[turaszakaszIndex].tavolsag) {
+            turaszakaszIndex = i;}}
+    return turaszakaszIndex;}</pre></code>
+
+<p>kisebb: egy < ketto </p>
+
+
+
+    </details>
+
+<details>
+<summary>TypeScript</summary>
+  <h2>TypeScript</h2>
+
+  <p>fordítás figyeléssel: tsc fajlnev.ts -w</p>
+  <p>==Értéket||===Típust</p>
+
+<pre><code>function <b>SzamjegyekSzama</b>(vizsgaltSzam: number): number {
+    return vizsgaltSzam.toString().length;}</code></pre>
+
+    <pre><code>function <b>ElsoNszamSzorzat</b>(mennyiseg:number):number{
+    let szorzat:number=1;
+    for(let i:number=1; i<=mennyiseg; i++){
+        szorzat=szorzat*i
+    }
+    return szorzat;
+}</code></pre>
+
+<pre><code>function <B>PrimekSzama</B>(vizsgaltTomb: number[]): number {
+    let primekSzama: number = 0;
+    for (let i: number = 0; i < vizsgaltTomb.length; i++) {
+        let osztokSzama: number = 0;
+        for (let j: number = 1; j <= vizsgaltTomb[i]; j++) {
+            if (vizsgaltTomb[i] % j == 0) {
+                osztokSzama++;}}
+        if (osztokSzama == 2) {
+            primekSzama++;}
+        else {}
+    return primekSzama;}</code></pre>
+<pre><code>function <b>MaganHangzokSzama</b>(vizsgaltSzoveg: string): number {
+    let maganhangzok: string = "aáeéiíoóöőuúüű";
+    let maganhangozMennyiseg: number = 0;
+    for (let i: number = 0; i < vizsgaltSzoveg.length; i++) {
+        for (let j: number = 0; j <= maganhangzok.length; j++)
+            if (maganhangzok[j] == vizsgaltSzoveg[i].toLowerCase()) {
+                maganhangozMennyiseg++;}}
+    return maganhangozMennyiseg;}</code></pre>
+
+<pre><code>function <b>TombGenerator</b>(meret: number, alsoHatar: number, felsoHatar: number): number[] {
+    var generaltTomb: number[] = [];
+    for (let i: number = 0; i < meret; i++) {
+        let generaltRandomSzam: number = Math.round(Math.random() * (felsoHatar - alsoHatar) + alsoHatar);
+        generaltTomb.push(generaltRandomSzam);}
+    return generaltTomb;}
+var generaltTomb: number[] = TombGenerator(20, 1, 10);
+console.log(generaltTomb);</code></pre>
+
+<pre><code>function <b>OsszegzesEsAtlagszamitas</b>(vizsgaltTomb:number[]):[number,number]{
+  let osszeg:number=0;
+  for(let i:number=0; i i&lt;vizsgaltTomb.length; i++){
+    osszeg+=vizsgaltTomb[i];}
+  return[osszeg, osszeg/vizsgaltTomb.length]}
+let osszegEsAtlag=OsszegzesEsAtlagszamitas(generaltTomb);
+console.log("A generált tömb elemeinek összege: ", osszegEsAtlag[0]);
+console.log("A generált tömb elemeinek átlaga: ", osszegEsAtlag[1]);}</code></pre>
+
+<pre><code>function <b>MinIndexErtekTomb</b>(VizsgaltTomb:number[]):[number,number[]]{
+  let minIndex:number=0;
+  let minErtekHelyek:number[]=[];
+  for(let i:number=0; i i$lt;VizsgaltTomb.length; i++){
+    if(VizsgaltTomb[i](<)VizsgaltTomb[minIndex]){
+      minIndex=i;
+      minErtekHelyek=[i];}
+      else if(VizsgaltTomb[i]==VizsgaltTomb[minIndex]){
+    minErtekHelyek.push(i);}}
+  return [VizsgaltTomb[minIndex], minErtekHelyek];}
+let minAdatok: [number,number[]]=MinindexErtekOsszes(generaltTomb);
+console.log("A legkisebb elem értéke a generált tömbben:" + minAdatok[0]);
+console.log("A legkisebb elem indexe a tömbbe: "+minAdatok[1]);</code></pre>
+
+<pre><code>function <b>MegszamlalasEsKivalogatasParatlan</b>
+  (vizsgaltTomb:number[]):[number, number[]]{
+  let paratlanokTombje:number[]=[];
+  for(let i:number=0; i(<)vizsgaltTomb.length;i++){
+    if(vizsgaltTomb[i]%2==1){
+      paratlanokTombje.push(vizsgaltTomb[i]);}}
+  return [paratlanokTombje.length, paratlanokTombje];}
+let paratlanokListaja:[number,number[]]=MegszamlalasEsKivalogatasParatlan(generaltTomb);
+console.log("A páratlanok száma:"+paratlanokListaja[0]);
+console.log("A páratlanok listája: "+paratlanokListaja[1]);
+</code></pre>
+
+<p >Prím számok megszámlálása és kiválogatása(TUPLE)</p>
+<pre><code>function <b>PrimE</b>(vizsgaltSzam: number): boolean {
+    let oszto: number = 0;
+    for (let i: number = 1; i <= vizsgaltSzam; i++) {
+        if (vizsgaltSzam % i == 0) {
+            oszto++;}}
+    if (oszto == 2) {
+        return true;}
+    return false;}
+
+function <b>SzerepelE</b>(vizsgaltTomb: number[], vizsgaltSzam: number): boolean {
+    for (let i: number = 0; i < vizsgaltTomb.length; i++) {
+        if (vizsgaltTomb[i] == vizsgaltSzam) {
+            return true;}}
+    return false;}
+
+function <b>MegszamlalasEsKivalotagasPrim</b>(vizsgaltTomb: number[]): [number, number[]] {
+    let primekTombje: number[] = [];
+    for (let i: number = 0; i < vizsgaltTomb.length; i++) {
+        if (PrimE(vizsgaltTomb[i]) == true && SzerepelE(primekTombje, vizsgaltTomb[i]) == false)
+        {primekTombje.push(vizsgaltTomb[i]);}}
+    return [primekTombje.length, primekTombje];}
+let primekListaja: [number, number[]] = MegszamlalasEsKivalotagasPrim(generaltTomb);
+console.log("A prím elemek száma a tömbben:" + primekListaja[0]);
+console.log("A prím elemek listája a tömbben:" + primekListaja[1]);</code></pre>
+
+<pre><code>function <b>HosegriadoSzint</b>(nap1: number, nap2: number, nap3: number): number {
+    if (nap1 >= 27 && nap2 >= 27 && nap3 >= 27) {
+        return 3;}
+    else if (nap1 >= 25 && nap2 >= 25 && nap3 >= 25) {
+        return 2;}
+    else if (nap1 >= 25 || nap2 >= 25 || nap3 >= 25) {
+        return 1;}
+    else {
+        return 0;}}</code></pre>
+
+<pre><code>function <b>Erettsegi</b>(pontok:number[]):[number,number]{
+  let osszPont:number=0;
+  for(let i=0; i $lt; pontok.length;i++){
+    osszPont+=pontok[i];
+  }
+  let jegy:number=0;
+  if(osszPont<=39){
+    jegy=1;
+  }
+  else if(osszPont<=59){
+    jegy=2;
+  }
+  else if(osszPont<=79){
+    jegy=3;
+  }
+    else if(osszPont<=119){
+    jegy=4;
+  }
+  else{
+    jegy=5;
+  }
+  return [osszPont,jegy];
+}</code></pre>
+
+<pre><code><b>interface</b> Fifa{
+    csapatNeve: string;
+    helyezes: number;
+    valtozas: number;
+    pontszam: number;};
+
+  function <b>ObjektumFeltolto</b>(feltoltendoElem:string[]):Fifa[] {
+    const beolvasottAdatok: Fifa[] = [];
+    for (let i = 0; i < feltoltendoElem.length; i++) {
+        let daraboltAdatSor = feltoltendoElem[i].split(";")
+        let objektum: Fifa = {
+        csapatNeve: daraboltAdatSor[0],
+        helyezes:Number(daraboltAdatSor[1]),
+        valtozas:Number(daraboltAdatSor[2]),
+        pontszam:Number(daraboltAdatSor[3]),};
+        beolvasottAdatok.push(objektum);}
+    return beolvasottAdatok;}
+  const fifaAdatok = ObjektumFeltolto(csapatAdat);
+  console.log(fifaAdatok);</code></pre>
+
+  <pre><code>function <b>AtlagFelettiek</b>( <b>vizsgaltTomb: Fifa[]</b> ): {nev: string; pontszam: number}[] {
+    let atlagFelettiek:{nev: string; pontszam: number}[]=[];
+    let atlagPontszam = AtlagPontszam(vizsgaltTomb);
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        if (vizsgaltTomb[i].pontszam > atlagPontszam) {
+            let ujElem = {
+            nev:vizsgaltTomb[i].csapatNeve,
+            pontszam:vizsgaltTomb[i].pontszam,}
+            atlagFelettiek.push(ujElem);}}
+    return atlagFelettiek;}</code></pre>
+
+<pre><code>function <b>ValtozasKivalogato</b>(vizsgaltTomb: Fifa[]):number[] {
+    let valtozasLista:number[] = [];
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        let szerepelE = false;
+        for (let j = 0; j < valtozasLista.length; j++) {
+            if (valtozasLista[j] == vizsgaltTomb[i].valtozas) {
+                szerepelE = true;}}
+        if (szerepelE == false) {
+            valtozasLista.push(vizsgaltTomb[i].valtozas);}}
+    return valtozasLista;}
+let valtozasTipusok:number[] = ValtozasKivalogato(fifaAdatok);
+
+function <b>ValtozasMegszamolo</b>(vizsgaltTomb: Fifa[], valtozasLista: number[]):number[] {
+    let valtozasMennyiseg: number[]= [];
+    for (let i = 0; i < valtozasLista.length; i++) {
+        valtozasMennyiseg.push(0);}
+    for (let i = 0; i < vizsgaltTomb.length; i++) {
+        for (let j = 0; j < valtozasLista.length; j++) {
+            if (valtozasLista[j] == vizsgaltTomb[i].valtozas) {
+                valtozasMennyiseg[j]++;}}}
+    return valtozasMennyiseg;}
+let valtozasTipusokMennyisege:number[] = ValtozasMegszamolo(fifaAdatok, valtozasTipusok)</code></pre>
+
+</details>
+
+<details>
+  <summary>Server</summary>
+  <h2>Szerver</h2>
+
+
+<pre><code>var http = require("http");
+http.createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World");
+}).listen(8080); ||| node .\fájnév //localhost:8080
+</code></pre>
+
+
+<pre><code>var http = require("http");
+const hostname = "127.0.0.1"; //A szerver IP cím(LOCALHOST)
+const port = 3000; //A szerver potja
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;//Státuszkód szerver felé, 200 = minden rendben -404
+    res.setHeader("Content-Type", "text/plain");//Tartalom típus
+    res.end("Szeretem a NodeJS");//Üzenet átadása az oldalra, és kapcsolat lezárása});
+server.listen(port, hostname, () => {
+    console.log(`A szerverünk fut a http://${hostname}:${port} címen`);// http://localhost:3000   ||| http://127.0.0.1:3000
+})</code></pre>
+
+</details>
+
+<details>
+  <summary>Angular</summary>
+  <h2>Angular</h2>
+</details>
+
+
+<h2>GitHub</h2>
+<ol>
+<p style="text-decoration: underline; font-weight: bold;"> Feltöltés:</p>
+<li>Változások hozzáadása
+git add .</li>
+
+<li>Commit készítése
+git commit -m "Üzenet a változásról"</li>
+
+<li>Feltöltés GitHubra
+git push -u origin main</li>
+
+<li>Következő push-hoz már elég csak:
+git push</li>
+</ol>
+
+</div>
+</body>
+</html>
