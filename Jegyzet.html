@@ -885,24 +885,22 @@ server.listen(port, hostname, () => {
   <li>ng new elnevezes --no-standalone</li>
   <li>cd projektNeve</li>
   <li>ng generate component KomponensNev || ng g c kompNev</li>
-  <li>app.html - kitörölni amit kell</li>
   <li>bootstrap install: npm i bootstrap -- angular.json: "./node_modules/bootstrap/dist/css/bootstrap.css",</li>
         <li>ng serve-4200</li>
+  <li>app.html</li>
   <li>routing</li>
   <li>app-routing-module.ts: {path}</li>
   <li>appModule -- Forms Module</li>
   <li>html: beviteli mezők stb: [(ngModel)]</li>
-
 </ol>
 
-<p class="cim">Data Binding:</p>
 <table>
   <tr>
       <th>Tulajdonság</th>
       <th>Kifejezés</th>
   </tr>
   <tr>
-      <td colspan="2" class="text-center">Összeköti a komponensben lévő adatokat a HTML-el.</td>
+      <td colspan="2">Data binding-Összeköti a komponensben lévő adatokat a HTML-el.</td>
   </tr>
   <tr>
     <td>Interpoláció: </td>
@@ -916,16 +914,16 @@ server.listen(port, hostname, () => {
     <td>Event Binding: Események kezelése </td>
     <td>(esemény típus)="cselekmény"</td>
   </tr>
-  <tr><td>[(ngModel)]="minta"-minta:</td></tr>
+  <tr><td>Két irányú kötés:</td>
+  <td> [(ngModel)]="minta"</td></tr>
   <tr>
     <td>app-routing-module.ts:</td>
     <td>
-    const routes: Routes = [
+<pre><code>    const routes: Routes = [
   { path: "hiba", component: Hiba },
-  { path: "gyakorlat", component: Gyakorlat }, //melyik komponen töltsön be
+  { path: "gyakorlat", component: Gyakorlat }, //melyik komponens töltsön be
   { path: "", redirectTo: "/gyakorlat", pathMatch: "full" },//üresen hagyjuk
-  { path: "**", component: Hiba}//bármi más esetén | az adott útvonal random választódik ki a meglévők közül
-];</td>
+  { path: "**", component: Hiba}//bármi más esetén | **az adott útvonal random választódik ki a meglévők közül];</code></pre></td>
 </tr>
 <tr>
  <td> Hiba</td>
@@ -934,26 +932,29 @@ server.listen(port, hostname, () => {
 </div></td>
 </tr>
 <tr>
-  <td>*ngIf-Ha a feltétel igaz -struktúrális direktíva</td>
+  <td>struktúrális direktíva-*ngIf-Ha a feltétel igaz</td>
   <td><p *ngIf="szam">
   A(z) {{ PrimE(szam) ? 'prímszám' : 'nem prímszám'}}.
 </p>
-<p *ngIf="szamEgy && szamKetto">
+<pre><code><p *ngIf="szamEgy && szamKetto">
   A számok összege: {{szamEgy}} + {{szamKetto}}= {{Osszeg()}};
-</p></td>
+</p></code></pre></td>
 </tr>
 <tr>
-  <td>*ngFor - listák ismétlése</td>
-  <td>Korábbi műveletek(html):
-<ul style="list-style-type: circle;">
-  <li *ngFor="let eredmeny of eredmenyek|mentesek|">
-    {{eredmeny}}
-  </li>
-</ul></td>
-</tr>
-<tr>
-  <td></td>
-  <td><b>EredmenyMentes</b>():void{
+  <td><pre><code><b>PrimE</b>:szam:number=0;
+  eredmenyek:string[]=[]
+  <b>PrimE</b>(szam:number):boolean{
+    var osztokSzama=0;
+    for(let i=1;i<=szam; i++){
+      if(szam%i==0){
+        osztokSzama++;
+      }
+    }
+return osztokSzama==2;
+  }</code></pre>
+</td>
+<td>
+  <pre><code><b>EredmenyMentes</b>():void{
     let eredmeny='';
     if(this.PrimE(this.szam)){
       eredmeny=`${this.szam} egy prímszám.`;
@@ -962,31 +963,49 @@ server.listen(port, hostname, () => {
       eredmeny=`${this.szam} nem prímszám.`;
     }
       this.eredmenyek.push(eredmeny);
-    }
-  }</td>
+    }</code></pre></td>
 </tr>
-</table>
-
-<pre><code>TTI(): number{
+<tr>
+  <td>*ngFor - listák ismétlése</td>
+  <td>Korábbi műveletek(html):
+<pre><code>&lt;ul style="list-style-type: circle;">
+  &lt;li *ngFor="let eredmeny of eredmenyek|mentesek|">
+    {{eredmeny}}
+  </li&lt;></code></pre>
+</ul></td>
+</tr>
+<tr>
+  <td><pre><code>TTI(): number{
     const meter=this.magassag/100;// cm → méter
     return +(this.testtomeg/(meter*meter)).toFixed(2);
-  } </code></pre>
+  } </code></pre></td>
+<td>
 <pre><code>EredmenyMentes():void{
     const tti=this.TTI().toFixed(2);
     const bejegyzes=`Magasság: ${this.magassag} cm, Tömeg: ${this.testtomeg} kg, TTI:${tti}`;
-    this.eredmenyek.push(bejegyzes);}</code></pre>
+    this.eredmenyek.push(bejegyzes);}</code></pre></td>
+</tr>
+</table>
+
+
+
 
 <p class="cim">Űrlap mező:</p>
-<pre><code><div class="form-group"><label for="elsoSzam">Első szám</label>
+<pre><code><div class="form-group">
+  <label for="elsoSzam">Első szám</label>
 <input type="number" id="elsoSzam" class="form-control" [(ngModel)]="szamEgy"></div>
+
 <button type="button" class="btn btn-dark w-100 my-2" (click)="EredmenyMentes()">Eredmény mentése</button>
 <h4>Korábbi műveletek:</h4>
-<ul>
+<ul&lt;
 <li *ngFor="let eredmeny of eredmenyek">
         {{eredmeny}}
-    </li>
+    </li
 </ul></code></pre>
 
+
+
+<h2>DOM feladatok:</h2>
 <pre><code>export class Objektumok {
   interfaceElem: versenyEredmeny[] = {[
     helyezes: 2,
@@ -1003,15 +1022,19 @@ export interface versenyEredmeny {
 }
 KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret}} db sportoló
 </code></pre><p>Első elem kiíratás:{{bevasarloLista[0]}}</p>
-<pre><code><h3>Objektum típusú tömb feldolgozása Táblázatban</h3>
-<h2>Lista</h2>
-<ul>
-    <li *ngFor="let versenyAdat of helsinki">
+
+
+
+<h2>Lista:</h2>
+<ul&lt;
+    &lt;li *ngFor="let versenyAdat of helsinki">
         {{versenyAdat.helyezes}}. helyezést ért el {{versenyAdat.csapatMeret}} db sportoló, {{versenyAdat.sportag}}
         sportágban ezen belül {{versenyAdat.versenyszam}} versenyszámban
     </li>
 </ul>
-<h2>Táblázat</h2>
+
+<h2>Objektum típusú tömb feldolgozása Táblázatban</h2>
+
 <table class="table table-dark table-striped table-sm table-hover text-center">
     <caption>Helsinki  verseny eredményei</caption>
     <thead>
@@ -1034,10 +1057,13 @@ KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret
     </tbody>
 </table>
 
-<h3>Szűrés:</h3>
+
+<h2>Szűrés:</h2>
 <input type="text" class="form-control mb-5" [(ngModel)]="kereso" placeholder="Keresés..."><!--SZŰRÉS MEZŐ-->
   //SZŰRÉS
-  kereso!: string;//Szűrő mezőre hivatkozás
+
+
+    <pre><code>kereso!: string;//Szűrő mezőre hivatkozás
 
   szures(adatok: any): boolean {//Szűrési folyamat az adatszerkezetre
     if (!this.kereso) return true;//nincs szűrés
@@ -1052,30 +1078,27 @@ KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret
       adatok.pecsetelohelyE?.toLowerCase().includes(keres)
     );
   }</code></pre>
-<p>? amikor nem biztos, hogy létezik egy adott elem.</p>
-<p>! biztos vagyok benne, hogy nem null vagy undefined</p>
 
-<pre><code>  ObjektumFeltolto(feltoltendoElem: string[]): utvonalak[] {
+<p>? amikor nem biztos, hogy létezik egy adott elem.</p>
+<p>! biztos vagyok benne, hogy létezik</p>
+
+<pre><code>  <b>ObjektumFeltolto</b>(feltoltendoElem: string[]): utvonalak[] {
     const beolvasottAdatok = [];
     for (let i = 0; i < feltoltendoElem.length; i++) {
       let daraboltAdatSor = feltoltendoElem[i].split(";");
-      let objektum: utvonalak = new KekturaUtvonal(daraboltAdatSor[0], daraboltAdatSor[1], daraboltAdatSor[2], daraboltAdatSor[3], daraboltAdatSor[4], daraboltAdatSor[5]);
-      beolvasottAdatok.push(objektum);
-    }
-    return beolvasottAdatok;
-  }
+      let objektum: utvonalak = new KekturaUtvonal(daraboltAdatSor[0], daraboltAdatSor[1],
+      daraboltAdatSor[2], daraboltAdatSor[3], daraboltAdatSor[4], daraboltAdatSor[5]);
+      beolvasottAdatok.push(objektum);}
+    return beolvasottAdatok;}
 
-  kekturaadatok: utvonalak[] = this.ObjektumFeltolto(this.adatok);
+  kekturaadatok: utvonalak[] = this.ObjektumFeltolto(this.adatok);</code></pre>
 
-  <p>mentés html:</p>
-  <button class="btn btn-primary w-100 my-3" (click)="Mentes()">Adatok mentése</button>
+<button class="btn btn-primary w-100 my-3" (click)="Mentes()">Adatok mentése-HTML</button>
 
-  Mentes() {
+  <pre><code>Mentes() {
     let objektum: utvonalak = new KekturaUtvonal(this.kezdoPontInput,
     this.vegPontInput, this.tavolsagInput, this.emelkedesInput, this.lejtesInput, this.pecsetInput);
-
-    this.kekturaadatok.push(objektum);
-  }
+    this.kekturaadatok.push(objektum);}
 </code></pre>
 
 <pre><code>interface FifaAdat {
@@ -1090,20 +1113,12 @@ class FifaElem implements FifaAdat {
   helyezes: number;
   valtozas: number;
   pontszam: number;
-
   <!--Konstruktor: akkor fut le, amikor új "autót"-t hozunk létre-->
   constructor(nev: string, helyezes: number, valtozas: number, pontszam: number) {
     this.nev = nev; <!--beállítjuk az objektum tulajdonságát-->
     this.helyezes = helyezes;
     this.valtozas = valtozas;
-    this.pontszam = pontszam;
-  }}
-<!--páldányosítás: új objektum létrehozása az osztály alapján: let auto1 = new Auto("Toyota", 2020);-->
-
-</code></pre>
-
-
-
+    this.pontszam = pontszam;}}</code></pre><!--páldányosítás: új objektum létrehozása az osztály alapján: let auto1 = new Auto("Toyota", 2020);-->
 
 </details>
 
