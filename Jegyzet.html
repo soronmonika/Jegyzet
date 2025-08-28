@@ -887,11 +887,12 @@ server.listen(port, hostname, () => {
   <li>ng generate component KomponensNev || ng g c kompNev</li>
   <li>app.html - kitörölni amit kell</li>
   <li>bootstrap install: npm i bootstrap -- angular.json: "./node_modules/bootstrap/dist/css/bootstrap.css",</li>
+        <li>ng serve-4200</li>
   <li>routing</li>
   <li>app-routing-module.ts: {path}</li>
   <li>appModule -- Forms Module</li>
   <li>html: beviteli mezők stb: [(ngModel)]</li>
-  <li>ng serve</li>
+
 </ol>
 
 <p class="cim">Data Binding:</p>
@@ -923,7 +924,7 @@ server.listen(port, hostname, () => {
   { path: "hiba", component: Hiba },
   { path: "gyakorlat", component: Gyakorlat }, //melyik komponen töltsön be
   { path: "", redirectTo: "/gyakorlat", pathMatch: "full" },//üresen hagyjuk
-  { path: "**", component: Gyakorlat }//bármi más esetén
+  { path: "**", component: Hiba}//bármi más esetén | az adott útvonal random választódik ki a meglévők közül
 ];</td>
 </tr>
 <tr>
@@ -945,7 +946,7 @@ server.listen(port, hostname, () => {
   <td>*ngFor - listák ismétlése</td>
   <td>Korábbi műveletek(html):
 <ul style="list-style-type: circle;">
-  <li *ngFor="let eredmeny of eredmenyek">
+  <li *ngFor="let eredmeny of eredmenyek|mentesek|">
     {{eredmeny}}
   </li>
 </ul></td>
@@ -979,14 +980,12 @@ server.listen(port, hostname, () => {
 <pre><code><div class="form-group"><label for="elsoSzam">Első szám</label>
 <input type="number" id="elsoSzam" class="form-control" [(ngModel)]="szamEgy"></div>
 <button type="button" class="btn btn-dark w-100 my-2" (click)="EredmenyMentes()">Eredmény mentése</button>
-<h2>Korábbi műveletek:</h2>
+<h4>Korábbi műveletek:</h4>
 <ul>
 <li *ngFor="let eredmeny of eredmenyek">
         {{eredmeny}}
     </li>
 </ul></code></pre>
-
-
 
 <pre><code>export class Objektumok {
   interfaceElem: versenyEredmeny[] = {[
@@ -1003,10 +1002,8 @@ export interface versenyEredmeny {
   versenyszam: string;
 }
 KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret}} db sportoló
-</code></pre>
-
-<p>Első elem kiíratás:{{bevasarloLista[0]}}</p>
-<pre><code><h1>Objektum típusú tömb feldolgozása táblázatba</h1>
+</code></pre><p>Első elem kiíratás:{{bevasarloLista[0]}}</p>
+<pre><code><h3>Objektum típusú tömb feldolgozása Táblázatban</h3>
 <h2>Lista</h2>
 <ul>
     <li *ngFor="let versenyAdat of helsinki">
@@ -1027,17 +1024,102 @@ KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret
     </thead>
     <tbody>
         <tr *ngFor="let versenyAdat of helsinki">
+          <ng-container *ngIf="szures(adatok)">
             <td>{{versenyAdat.helyezes}}</td>
             <td>{{versenyAdat.csapatMeret}}</td>
             <td>{{versenyAdat.sportag}}</td>
             <td>{{versenyAdat.versenyszam}}</td>
+            </ng-container>
         </tr>
     </tbody>
-</table></code></pre>
+</table>
+
+<h3>Szűrés:</h3>
+<input type="text" class="form-control mb-5" [(ngModel)]="kereso" placeholder="Keresés..."><!--SZŰRÉS MEZŐ-->
+  //SZŰRÉS
+  kereso!: string;//Szűrő mezőre hivatkozás
+
+  szures(adatok: any): boolean {//Szűrési folyamat az adatszerkezetre
+    if (!this.kereso) return true;//nincs szűrés
+    const keres = this.kereso.toLowerCase();
+
+    return (
+      adatok.kezdoPont?.toLowerCase().includes(keres) ||
+      adatok.vegPontPont?.toLowerCase().includes(keres) ||
+      adatok.tavolsag?.toString().toLowerCase().includes(keres) ||
+      adatok.emelkedes?.toString().toLowerCase().includes(keres) ||
+      adatok.lejtes?.toString().toLowerCase().includes(keres) ||
+      adatok.pecsetelohelyE?.toLowerCase().includes(keres)
+    );
+  }</code></pre>
+<p>? amikor nem biztos, hogy létezik egy adott elem.</p>
+<p>! biztos vagyok benne, hogy nem null vagy undefined</p>
+
+<pre><code>  ObjektumFeltolto(feltoltendoElem: string[]): utvonalak[] {
+    const beolvasottAdatok = [];
+    for (let i = 0; i < feltoltendoElem.length; i++) {
+      let daraboltAdatSor = feltoltendoElem[i].split(";");
+      let objektum: utvonalak = new KekturaUtvonal(daraboltAdatSor[0], daraboltAdatSor[1], daraboltAdatSor[2], daraboltAdatSor[3], daraboltAdatSor[4], daraboltAdatSor[5]);
+      beolvasottAdatok.push(objektum);
+    }
+    return beolvasottAdatok;
+  }
+
+  kekturaadatok: utvonalak[] = this.ObjektumFeltolto(this.adatok);
+
+  <p>mentés html:</p>
+  <button class="btn btn-primary w-100 my-3" (click)="Mentes()">Adatok mentése</button>
+
+  Mentes() {
+    let objektum: utvonalak = new KekturaUtvonal(this.kezdoPontInput,
+    this.vegPontInput, this.tavolsagInput, this.emelkedesInput, this.lejtesInput, this.pecsetInput);
+
+    this.kekturaadatok.push(objektum);
+  }
+</code></pre>
+
+<pre><code>interface FifaAdat {
+  nev: string;
+  helyezes: number;
+  valtozas: number;
+  pontszam: number;
+}
+
+class FifaElem implements FifaAdat {
+  nev: string;
+  helyezes: number;
+  valtozas: number;
+  pontszam: number;
+
+  <!--Konstruktor: akkor fut le, amikor új "autót"-t hozunk létre-->
+  constructor(nev: string, helyezes: number, valtozas: number, pontszam: number) {
+    this.nev = nev; <!--beállítjuk az objektum tulajdonságát-->
+    this.helyezes = helyezes;
+    this.valtozas = valtozas;
+    this.pontszam = pontszam;
+  }}
+<!--páldányosítás: új objektum létrehozása az osztály alapján: let auto1 = new Auto("Toyota", 2020);-->
+
+</code></pre>
+
+
 
 
 </details>
 
+
+<details>
+  <summary>MongoDB</summary>
+  <h2>MongoDB</h2>
+<ol>
+  <li>Lokális adatbázikezelő szoftver: A mongoDB Atlas(flehőszolgáltatás) a MongoDB hivatalos felhőalapú adatbázis-szolgáltatása, amely lehetővé teszi, hogy saját szerver üzemeltetése nélkül, egyszerűen kezeljünk adatbázisokat online</li>
+  <li>NoSQL adatbázis: nem táblákba tárolja az adatokat,mint az SQL, hanem dokumentumokban(JSON szerű adatok).</li>
+  <li>rugalmas: nem kell előre fix sémát meghatározni.</li>
+  <li>Database(adatbázis)</li>
+  <li>collections(gyájtemény-táblák SQL-be)</li>
+  <LI>Document(row-SQL)</LI>
+</ol>
+</details>
 
 <h2>GitHub</h2>
 <ol>
