@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML / CSS Jegyzet</title>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f4f4f4;
+      background-color: rgb(147, 177, 147);
+    }
+    h2{
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    h3{
+      color: gray;
+    }
+    .code-example {
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table, tr, th, td{
+       border: 2px  solid  black;
+    }
+    .cim{
+      text-align: left;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+<h2>1. HTML</h2>
+
+<p class="cim"><b>Elmélet:</b></p>
+
+<table>
+  <tr>
+      <th>1. Mi a HTML?</th>
+      <th>alapstruktúrája</th>
+  </tr>
+  <tr>
+    <td><ul>
+<li>  HyperText Markup Language rövidítése</li>
+
+<li>Weboldalak szerkezetének leírására szolgál</li>
+<li>
+Jelölőnyelv, nem programozási nyelv</li>
+
+<li>A böngészők értelmezik és megjelenítik</li>
+
+</ul></td>
+    <td>
+<ul>
+<li>!DOCTYPE html> → HTML5 nyelv dokumentum típusának meghatározása: a jelenlegi szabvány</li>
+<li>html> → a teljes oldal</li>
+<li>head> → metaadatok (cím, karakterkódolás, linkek)</li>
+
+<li>body> → látható tartalom</li>
+<li>tag/elem(hivatkozás): pl.: p</li>
+<li>attribútom(neve): tag>tulajdonság(neve)="attribútom értéke: "https://google.com" ">Tartalom< /tag>: href, src, alt, target....</li>
+
+</ul>
+
+</table>
+
+<link rel="stylesheet" href="">
+<a href="" target=""></a>
+
+  <p class="cim">Formázás:</p>
+<ul>
+<li>kozepre {text-align: center;} display: inline-block; margin: 0px auto; vertical-align: center;width: 80%;</li>
+<li>  sorkizart,középre,jobbra,balra {text-align: justify;}</li>
+<li>  sorkizart {text-align: justify;}  border-collapse: collapse;- szegély eltüntetése</li>
+
+<p class="cim"><b>Táblázat</b></p>
+</ul>
+    <table  style="font-weight: bold;">
+        <caption>Egyszerű táblázat - CÍM</caption>
+        <tr>
+            <th>Oszlop 01</th>
+            <th>Beépített függvények</th>
+            <th>Oszlop 03</th>
+            <th>Oszlop 04</th>
+        </tr>
+        <tr >
+            <td colspan="2">1/1: colspan</td>
+            <td>Hatvány: <code>Math.pow()</code></td>
+            <td>Gyökvonás: <code> Math.Swrt()</code></td>
+        </tr>
+        <tr>
+            <td rowspan="2">2/1:rowspan</td>
+            <td>Lefelé kerekítés: <code>Math.floor()</code></td>
+            <td>2/3</td>
+            <td>2/4</td>
+        </tr>
+        <tr>
+            <td>3/1</td>
+            <td>3/2</td>
+            <td>3/3</td>
+        </tr>
+    </table>
+
+     <p class="cim">Listák</p>
+  <p>Rendezetlen(számozatlan) lista: </p>
+
+  <ul style="list-style-type: disc;">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>JavaScript</li>
+  </ul>
+
+  <p>Rendezett(számozott) lista:</p>
+  <ol>
+    <li>Első lépés</li>
+    <li>Második lépés</li>
+    <li>Harmadik lépés</li>
+  </ol>
+  <p>Lista: type=I; leíró(description) lista: dl, dt, dd(az elemek számozás nélkül, jelekekkel vannak csak megkülönböztetve)</p>
+
+
+  <p class="cim">Űrlap</p>
+
+<form action="#" method="post">
+  <!-- Név mező -->
+  <label for="nev">Név:</label>
+  <input type="text" id="nev" name="nev" required>
+  <br><br>
+
+  <!-- E-mail mező -->
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" name="email" required>
+  <br><br>
+
+  <!-- Jelszó mező -->
+  <label for="jelszo">Jelszó:</label>
+  <input type="password" id="jelszo" name="jelszo">
+  <br><br>
+
+  <!-- Legördülő lista -->
+  <label for="orszag">Ország:</label>
+  <select id="orszag" name="orszag">
+    <option value="hu">Magyarország</option>
+    <option value="de">Németország</option>
+    <option value="us">USA</option>
+  </select>
+  <br><br>
+
+   <!-- Üzenet -->
+    <label for="uzenet">Üzenet:</label>
+  <textarea id="uzenet" name="uzenet" rows="4"></textarea>
+
+  <!-- Jelölőnégyzet -->
+  <label><input type="checkbox" name="hirlevel"> Feliratkozom a hírlevélre</label>
+  <br><br>
+
+  <!-- Gomb -->
+  <input type="submit" value="Küldés">
+</form>
+
+
+
+<h2>2. CSS</h2>
+
+<p class="cim">Alapvető szövegformázások</p>
+<p style="font-size: 20px;">Betűméret (px / em / rem)</p>
+<p style="font-weight: bold;">Félkövér szöveg</p>
+<p style="font-style: italic;">Dőlt szöveg</p>
+<p style="text-align: center;">Középre igazított szöveg</p>
+<p style="text-transform: uppercase;">Nagybetűs szöveg</p>
+<p style="text-decoration: underline;">Aláhúzott szöveg</p>
+<p style="text-decoration: line-through;">Áthúzott szöveg</p>
+<p style="line-height: 2;">Sorköz beállítása</p>
+<p style="letter-spacing: 3px;">Betűköz beállítása</p>
+<p style="word-spacing: 10px;">Szóköz beállítása</p>
+<p style="white-space: nowrap;">Sortoreskikapcsolo</p>
+<p style="text-indent: 20px;">Első sori behúzás</p>
+<p style="font-family: 'Times New Roman', Times, serif;">Betűstílus</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Border - Szegély-Elem széle</p>
+<p>Left-Top-Right-Botton</p>
+<p style="border: 5px dashed red; border-radius: 12px; text-align: center;">Lekerekítés</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Padding - eltartás (belső távolság/belső margó/bélés)</p>
+<p>A padding segítségével meghatározhatjuk a tartalom és a div elem széle(border), közötti távolságot</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Margin- külső távolság</p>
+<p>Margó - A margin segítségével meghatározhatjuk a div elemek közötti távolságot, valamint az oldal szélétől való távolságát is az elemnek.</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Outline - külső szegély elem</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Pozíció:</p>
+<p>static, relative=>fixed, absolute, sticky. Float => clear:both</p>
+<p style="text-decoration: underline; font-weight: bold;">Linkek:</p>
+<p>a:link, a:visited, a:hover...</p>
+<p>Elrejtés: display:none/helyét megtartani: visibility:hidden</p>
+<p style="text-decoration: underline; font-weight: bold;">Méretek:</p>
+<p>Abszolút: px</p><p>Relatív: em(20px),rem(16px),%, vh,vw(weboldaltól függ)</p>
+
+<p style="text-decoration: underline; font-weight: bold;">Animálás:</p>
+<p>@keyframes – Meghatározza, hogy időben hogyan változik az elem stílusa.</p>
+<p>animation tulajdonság – Az animáció nevét, idejét és viselkedését adja meg.</p>
+
+
+</div>
+</body>
+</html>

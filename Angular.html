@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML / CSS Jegyzet</title>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f4f4f4;
+      background-color: rgb(147, 177, 147);
+    }
+    h2{
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    h3{
+      color: gray;
+    }
+    .code-example {
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table, tr, th, td{
+       border: 2px  solid  black;
+    }
+    .cim{
+      text-align: left;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Angular</h2>
+
+  <p class="cim">Alap</p>
+  <p>SPA- Single Page Application - nem tölt be újra, csak a tartalom változik.</p>
+<ol>
+  <li>cd "mappa"</li>
+  <li>ng new elnevezes --no-standalone</li>
+  <li>cd projektNeve</li>
+  <li>ng generate component KomponensNev || ng g c kompNev</li>
+  <li>bootstrap install: npm i bootstrap -- angular.json: "./node_modules/bootstrap/dist/css/bootstrap.css",</li>
+        <li>ng serve-4200</li>
+  <li>app.html</li>
+  <li>routing</li>
+  <li>app-routing-module.ts: {path}</li>
+  <li><pre><code>    const routes: Routes = [
+  { path: "hiba", component: Hiba },
+  { path: "gyakorlat", component: Gyakorlat }, //melyik komponens töltsön be
+  { path: "", redirectTo: "/gyakorlat", pathMatch: "full" },//üresen hagyjuk
+  { path: "**", component: Hiba}//bármi más esetén | **az adott útvonal random választódik ki a meglévők közül];</code></pre></li>
+  <li>appModule -- Forms Module</li>
+  <li>html: beviteli mezők stb:</li>
+<li><p class="cim">Űrlap mező:</p>
+<pre><code><div class="form-group">
+  <label for="elsoSzam">Első szám</label>
+<input type="number" id="elsoSzam" class="form-control" [(ngModel)]="szamEgy">
+</div></code></pre></li>
+<li>Osszeg():number{
+  return this.szamEgy+this.szamKetto;}
+</li>
+<li><pre><code>eredmenyek: string[] = [];
+  szamEgy: number = 0;
+  szamKetto: number = 0;
+
+  <b>EredmenyMentes()</b>: void {
+    let eredmeny = `${this.szamEgy} + ${this.szamKetto} = ${this.szamEgy + this.szamKetto}`;
+    this.eredmenyek.push(eredmeny); // hozzáadjuk a loghoz}</code></pre></li>
+    <li>
+      <pre><code></code></pre>
+    </li>
+</ol>
+
+<button type="button" class="btn btn-success w-100 my-2" (click)="EredmenyMentes()">Eredmény mentése</button>
+
+<h4>Listák ismétlése, korábbi műveletek:</h4>
+<ul&lt;
+&lt;li *ngFor="let eredmeny of eredmenyek">
+        {{eredmeny}}
+    </li/ul>
+    <p *ngIf="szamEgy && szamKetto">
+  A számok összege: {{szamEgy}} + {{szamKetto}}= {{Osszeg()}};
+</p>
+<p *ngIf="szam">
+  A(z) {{ PrimE(szam) ? 'prímszám' : 'nem prímszám'}}.
+</p>
+
+
+<table>
+  <tr>
+      <th>Tulajdonság</th>
+      <th>Kifejezés</th>
+  </tr>
+  <tr>
+      <td colspan="2">Data binding-Összeköti a komponensben lévő adatokat a HTML-el.</td>
+  </tr>
+  <tr>
+    <td>Interpoláció: </td>
+    <td>{{Kifejezés}}</td>
+  </tr>
+  <tr>
+    <td>Property Bindig: tulajdonság hivatkozás</td>
+    <td>[tulajdonság]="kifejezés" \\ [href]="kepUtvonal"| [target]="kepCel"|[src]="kepLink"|[alt]="kepAlternativSzoveg"|[title]="kepCimke"</td>
+  </tr>
+  <tr>
+    <td>Event Binding: Események kezelése </td>
+    <td>(esemény típus)="cselekmény"</td>
+  </tr>
+  <tr><td>Két irányú kötés:</td>
+  <td> [(ngModel)]="minta"</td></tr>
+</tr>
+<tr>
+ <td> Hiba</td>
+  <td><div class="alert alert-danger" role="alert">
+    Hibás komponens hivatkozás!
+</div></td>
+</tr>
+<tr>
+  <td><pre><code><b>PrimE</b>:szam:number=0;
+  eredmenyek:string[]=[]
+  <b>PrimE</b>(szam:number):boolean{
+    var osztokSzama=0;
+    for(let i=1;i<=szam; i++){
+      if(szam%i==0){
+        osztokSzama++;}}
+return osztokSzama==2;}</code></pre>
+</td>
+<td>
+  <pre><code><b>EredmenyMentes</b>():void{
+    let eredmeny='';
+    if(this.PrimE(this.szam)){
+      eredmeny=`${this.szam} egy prímszám.`;}
+    else{
+      eredmeny=`${this.szam} nem prímszám.`;}
+      this.eredmenyek.push(eredmeny);}</code></pre></td>
+</tr>
+<tr>
+  <td><pre><code>TTI(): number{
+    const meter=this.magassag/100;// cm → méter
+    return +(this.testtomeg/(meter*meter)).toFixed(2);
+  } </code></pre></td>
+<td>
+<pre><code>EredmenyMentes():void{
+    const tti=this.TTI().toFixed(2);
+    const bejegyzes=`Magasság: ${this.magassag} cm, Tömeg: ${this.testtomeg} kg, TTI:${tti}`;
+    this.eredmenyek.push(bejegyzes);}</code></pre></td>
+</tr>
+<tr>
+  <td>
+    <pre><code>
+      <b>Vizsgafeladat</b> {
+htmlModul:number=0;
+bootstrapModul:number=0;
+javaScriptModul:number=0;
+typeScriptModul:number=0;
+angularModul:number=0;
+serverModul:number=0
+
+
+eredmenyek:string[]=[];
+
+EredmenyMentes():void{
+  if(this.htmlModul==null || this.bootstrapModul== null
+  || this.javaScriptModul==null || this.typeScriptModul==null
+  || this.angularModul==null || this.serverModul==null){
+    alert("Az összes mező kitöltése kötelező!")
+  }
+}
+    </code></pre>
+  </td>
+  <td><pre><code>const osszPont=this.htmlModul
+    + this.bootstrapModul
+    + this.javaScriptModul + this.typeScriptModul
+    + this.angularModul + this.serverModul;
+
+
+  let ertekeles="";
+  if(osszPont(<)50){
+    ertekeles="Sikertelen vizsga";
+  }
+  else if(osszPont(<)59){
+    ertekeles="Sikeres vizsga(2-es)";
+  }
+  else if(osszPont(<)69){
+    ertekeles="Sikeres vizsga(3-es)";
+  }  else if(osszPont(<)79){
+    ertekeles="Sikeres vizsga(4-es)";
+  }
+  else{
+    ertekeles="Sikeres vizsga(5-ös)";
+  }
+
+    this.eredmenyek.push(`összpont: ${osszPont} -> ${ertekeles}`);}
+</code></pre></td>
+</tr>
+<tr>
+  <td><pre><code>elsoVizsgaltNap!:number;
+masodikVizsgaltNap!:number;
+harmadikVizsgaltNap!:number;
+
+aktualisRiadoSzint(){
+  if(this.elsoVizsgaltNap !=null &&
+  this.masodikVizsgaltNap!=null &&
+  this.harmadikVizsgaltNap!=null){
+    if(this.elsoVizsgaltNap>=27 &&
+    this.masodikVizsgaltNap>=27 && this.harmadikVizsgaltNap>=27){
+      return "3.szintű";
+    }
+    else if(this.elsoVizsgaltNap>=25 &&
+    this.masodikVizsgaltNap>=25 &&
+    this.harmadikVizsgaltNap>=25){
+      return "2.szintű";
+    }
+    else if(this.elsoVizsgaltNap>=25 ||
+    this.masodikVizsgaltNap>=25 ||
+    this.harmadikVizsgaltNap>=25){
+      return "1.szintű";
+    }
+    else{
+      return "0.szintű"
+    }
+  }
+  else{
+    return "hiányzó adat";}}</code></pre></td>
+  <td>
+<pre><code>eredmenyek:string[]=[];
+EredmenyMentes(){
+  if(this.elsoVizsgaltNap !=null ||
+  this.masodikVizsgaltNap!=null ||
+  this.harmadikVizsgaltNap!=null){
+    this.eredmenyek.push(`${this.elsoVizsgaltNap}, ${this.masodikVizsgaltNap},
+    ${this.harmadikVizsgaltNap} esetén
+    ${this.aktualisRiadoSzint()}
+    hőségriadó volt elrendelve!`)}</code></pre>
+</td>
+</tr>
+</table>
+<br>
+
+<h2>DOM feladatok:</h2>
+<pre><code>export class Objektumok {
+  interfaceElem: versenyEredmeny[] = {[
+    helyezes: 2,
+    csapat_meret: 6,
+    sportag: "labdarúgás",
+    versenyszam: "kispályás football"
+  ]}
+}
+export interface versenyEredmeny {
+  helyezes: number;
+  csapat_meret: number;
+  sportag: string;
+  versenyszam: string;
+}
+KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret}} db sportoló
+</code></pre><p>Első elem kiíratás:{{bevasarloLista[0]}}</p>
+
+
+
+<h2>Lista:</h2>
+<ul&lt;
+    &lt;li *ngFor="let versenyAdat of helsinki">
+        {{versenyAdat.helyezes}}. helyezést ért el {{versenyAdat.csapatMeret}} db sportoló, {{versenyAdat.sportag}}
+        sportágban ezen belül {{versenyAdat.versenyszam}} versenyszámban
+    </li>
+</ul>
+
+<h2>Objektum típusú tömb feldolgozása Táblázatban</h2>
+
+<table class="table table-dark table-striped table-sm table-hover text-center">
+    <caption>Helsinki  verseny eredményei</caption>
+    <thead>
+        <tr>
+            <th>Helyezés</th>
+            <th>Csapat méret</th>
+            <th>Sportág</th>
+            <th>Versenyszám</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let versenyAdat of helsinki">
+          <ng-container *ngIf="szures(adatok)">
+            <td>{{versenyAdat.helyezes}}</td>
+            <td>{{versenyAdat.csapatMeret}}</td>
+            <td>{{versenyAdat.sportag}}</td>
+            <td>{{versenyAdat.versenyszam}}</td>
+            </ng-container>
+        </tr>
+    </tbody>
+</table>
+
+
+<h2>Szűrés:</h2>
+<input type="text" class="form-control mb-5" [(ngModel)]="kereso" placeholder="Keresés..."><!--SZŰRÉS MEZŐ-->
+  //SZŰRÉS
+    <pre><code>kereso!: string;//Szűrő mezőre hivatkozás
+
+  szures(adatok: any): boolean {//Szűrési folyamat az adatszerkezetre
+    if (!this.kereso) return true;//nincs szűrés
+    const keres = this.kereso.toLowerCase();
+
+    return (
+      adatok.kezdoPont?.toLowerCase().includes(keres) ||
+      adatok.vegPontPont?.toLowerCase().includes(keres) ||
+      adatok.tavolsag?.toString().toLowerCase().includes(keres) ||
+      adatok.emelkedes?.toString().toLowerCase().includes(keres) ||
+      adatok.lejtes?.toString().toLowerCase().includes(keres) ||
+      adatok.pecsetelohelyE?.toLowerCase().includes(keres)
+    );
+  }</code></pre>
+
+<p>? amikor nem biztos, hogy létezik egy adott elem.</p>
+<p>! biztos vagyok benne, hogy létezik</p>
+
+<pre><code>  <b>ObjektumFeltolto</b>(feltoltendoElem: string[]): utvonalak[] {
+    const beolvasottAdatok = [];
+    for (let i = 0; i < feltoltendoElem.length; i++) {
+      let daraboltAdatSor = feltoltendoElem[i].split(";");
+      let objektum: utvonalak = new KekturaUtvonal(daraboltAdatSor[0], daraboltAdatSor[1],
+      daraboltAdatSor[2], daraboltAdatSor[3], daraboltAdatSor[4], daraboltAdatSor[5]);
+      beolvasottAdatok.push(objektum);}
+    return beolvasottAdatok;}
+
+  kekturaadatok: utvonalak[] = this.ObjektumFeltolto(this.adatok);</code></pre>
+
+<button class="btn btn-primary w-100 my-3" (click)="Mentes()">Adatok mentése-HTML</button>
+
+
+  <pre><code>Mentes() {
+    let objektum: utvonalak = new KekturaUtvonal(this.kezdoPontInput,
+    this.vegPontInput, this.tavolsagInput, this.emelkedesInput, this.lejtesInput, this.pecsetInput);
+    this.kekturaadatok.push(objektum);}
+</code></pre>
+<pre><code>  kezdoPontInput!: string;
+  vegPontInput!: string;
+  tavolsagInput!: string;</code></pre>
+
+<pre><code>interface FifaAdat {
+  nev: string;
+  helyezes: number;
+  valtozas: number;
+  pontszam: number;
+}
+
+class FifaElem implements FifaAdat {
+  nev: string;
+  helyezes: number;
+  valtozas: number;
+  pontszam: number;
+
+  <!--Konstruktor: akkor fut le, amikor új "autót"-t hozunk létre-->
+  constructor(nev: string, helyezes: number, valtozas: number, pontszam: number) {
+    this.nev = nev; <!--beállítjuk az objektum tulajdonságát-->
+    this.helyezes = helyezes;
+    this.valtozas = valtozas;
+    this.pontszam = Number(pontszam.toString().replace(",", "."));;}}</code></pre><!--páldányosítás: új objektum létrehozása az osztály alapján: let auto1 = new Auto("Toyota", 2020);-->
+
+</div>
+</body>
+</html>

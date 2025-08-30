@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML / CSS Jegyzet</title>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      padding: 20px;
+      background-color: #f4f4f4;
+      background-color: rgb(147, 177, 147);
+    }
+    h2{
+      text-decoration: underline;
+    }
+    h1, h2, h3 {
+      color: green;
+      font-weight: bold;
+      text-align: center;
+    }
+    h3{
+      color: gray;
+    }
+    .code-example {
+      background-color: #222;
+      color: #fff;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin-bottom: 20px;
+    }
+    table, tr, th, td{
+       border: 2px  solid  black;
+    }
+    .cim{
+      text-align: left;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+<div class="container">
+  <h2>Szerver</h2>
+
+
+<pre><code>var http = require("http");
+http.createServer(function (req, res) {
+    res.writeHead(200, { "Content-Type": "text/plain" });
+    res.end("Hello World");
+}).listen(8080); ||| node .\fájnév //localhost:8080
+</code></pre>
+
+
+<pre><code>var http = require("http");
+const hostname = "127.0.0.1"; //A szerver IP cím(LOCALHOST)
+const port = 3000; //A szerver potja
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;//Státuszkód szerver felé, 200 = minden rendben -404
+    res.setHeader("Content-Type", "text/plain");//Tartalom típus
+    res.end("Szeretem a NodeJS");//Üzenet átadása az oldalra, és kapcsolat lezárása});
+server.listen(port, hostname, () => {
+    console.log(`A szerverünk fut a http://${hostname}:${port} címen`);// http://localhost:3000   ||| http://127.0.0.1:3000
+})
+
+
+<h2>MongoDB</h2>
+<ol>
+  <li>Lokális adatbázikezelő szoftver: A mongoDB Atlas(felhőszolgáltatás) a MongoDB hivatalos felhőalapú adatbázis-szolgáltatása, amely lehetővé teszi, hogy saját szerver üzemeltetése nélkül, egyszerűen kezeljünk adatbázisokat online</li>
+  <li>NoSQL adatbázis: nem táblákba tárolja az adatokat,mint az SQL, hanem dokumentumokban(JSON szerű adatok).</li>
+  <li>rugalmas: nem kell előre fix sémát meghatározni.</li>
+  <li>Database(adatbázis)</li>
+  <li>collections(gyájtemény-táblák SQL-be)</li>
+  <LI>Document(row-SQL)</LI>
+</ol>
+</div>
+</body>
+</html>
