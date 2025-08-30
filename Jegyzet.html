@@ -890,9 +890,47 @@ server.listen(port, hostname, () => {
   <li>app.html</li>
   <li>routing</li>
   <li>app-routing-module.ts: {path}</li>
+  <li><pre><code>    const routes: Routes = [
+  { path: "hiba", component: Hiba },
+  { path: "gyakorlat", component: Gyakorlat }, //melyik komponens töltsön be
+  { path: "", redirectTo: "/gyakorlat", pathMatch: "full" },//üresen hagyjuk
+  { path: "**", component: Hiba}//bármi más esetén | **az adott útvonal random választódik ki a meglévők közül];</code></pre></li>
   <li>appModule -- Forms Module</li>
-  <li>html: beviteli mezők stb: [(ngModel)]</li>
+  <li>html: beviteli mezők stb:</li>
+<li><p class="cim">Űrlap mező:</p>
+<pre><code><div class="form-group">
+  <label for="elsoSzam">Első szám</label>
+<input type="number" id="elsoSzam" class="form-control" [(ngModel)]="szamEgy">
+</div></code></pre></li>
+<li>Osszeg():number{
+  return this.szamEgy+this.szamKetto;}
+</li>
+<li><pre><code>eredmenyek: string[] = [];
+  szamEgy: number = 0;
+  szamKetto: number = 0;
+
+  <b>EredmenyMentes()</b>: void {
+    let eredmeny = `${this.szamEgy} + ${this.szamKetto} = ${this.szamEgy + this.szamKetto}`;
+    this.eredmenyek.push(eredmeny); // hozzáadjuk a loghoz}</code></pre></li>
+    <li>
+      <pre><code></code></pre>
+    </li>
 </ol>
+
+<button type="button" class="btn btn-success w-100 my-2" (click)="EredmenyMentes()">Eredmény mentése</button>
+
+<h4>Listák ismétlése, korábbi műveletek:</h4>
+<ul&lt;
+&lt;li *ngFor="let eredmeny of eredmenyek">
+        {{eredmeny}}
+    </li/ul>
+    <p *ngIf="szamEgy && szamKetto">
+  A számok összege: {{szamEgy}} + {{szamKetto}}= {{Osszeg()}};
+</p>
+<p *ngIf="szam">
+  A(z) {{ PrimE(szam) ? 'prímszám' : 'nem prímszám'}}.
+</p>
+
 
 <table>
   <tr>
@@ -916,14 +954,6 @@ server.listen(port, hostname, () => {
   </tr>
   <tr><td>Két irányú kötés:</td>
   <td> [(ngModel)]="minta"</td></tr>
-  <tr>
-    <td>app-routing-module.ts:</td>
-    <td>
-<pre><code>    const routes: Routes = [
-  { path: "hiba", component: Hiba },
-  { path: "gyakorlat", component: Gyakorlat }, //melyik komponens töltsön be
-  { path: "", redirectTo: "/gyakorlat", pathMatch: "full" },//üresen hagyjuk
-  { path: "**", component: Hiba}//bármi más esetén | **az adott útvonal random választódik ki a meglévők közül];</code></pre></td>
 </tr>
 <tr>
  <td> Hiba</td>
@@ -932,47 +962,23 @@ server.listen(port, hostname, () => {
 </div></td>
 </tr>
 <tr>
-  <td>struktúrális direktíva-*ngIf-Ha a feltétel igaz</td>
-  <td><p *ngIf="szam">
-  A(z) {{ PrimE(szam) ? 'prímszám' : 'nem prímszám'}}.
-</p>
-<pre><code><p *ngIf="szamEgy && szamKetto">
-  A számok összege: {{szamEgy}} + {{szamKetto}}= {{Osszeg()}};
-</p></code></pre></td>
-</tr>
-<tr>
   <td><pre><code><b>PrimE</b>:szam:number=0;
   eredmenyek:string[]=[]
   <b>PrimE</b>(szam:number):boolean{
     var osztokSzama=0;
     for(let i=1;i<=szam; i++){
       if(szam%i==0){
-        osztokSzama++;
-      }
-    }
-return osztokSzama==2;
-  }</code></pre>
+        osztokSzama++;}}
+return osztokSzama==2;}</code></pre>
 </td>
 <td>
   <pre><code><b>EredmenyMentes</b>():void{
     let eredmeny='';
     if(this.PrimE(this.szam)){
-      eredmeny=`${this.szam} egy prímszám.`;
-    }
+      eredmeny=`${this.szam} egy prímszám.`;}
     else{
-      eredmeny=`${this.szam} nem prímszám.`;
-    }
-      this.eredmenyek.push(eredmeny);
-    }</code></pre></td>
-</tr>
-<tr>
-  <td>*ngFor - listák ismétlése</td>
-  <td>Korábbi műveletek(html):
-<pre><code>&lt;ul style="list-style-type: circle;">
-  &lt;li *ngFor="let eredmeny of eredmenyek|mentesek|">
-    {{eredmeny}}
-  </li&lt;></code></pre>
-</ul></td>
+      eredmeny=`${this.szam} nem prímszám.`;}
+      this.eredmenyek.push(eredmeny);}</code></pre></td>
 </tr>
 <tr>
   <td><pre><code>TTI(): number{
@@ -985,25 +991,97 @@ return osztokSzama==2;
     const bejegyzes=`Magasság: ${this.magassag} cm, Tömeg: ${this.testtomeg} kg, TTI:${tti}`;
     this.eredmenyek.push(bejegyzes);}</code></pre></td>
 </tr>
+<tr>
+  <td>
+    <pre><code>
+      <b>Vizsgafeladat</b> {
+htmlModul:number=0;
+bootstrapModul:number=0;
+javaScriptModul:number=0;
+typeScriptModul:number=0;
+angularModul:number=0;
+serverModul:number=0
+
+
+eredmenyek:string[]=[];
+
+EredmenyMentes():void{
+  if(this.htmlModul==null || this.bootstrapModul== null
+  || this.javaScriptModul==null || this.typeScriptModul==null
+  || this.angularModul==null || this.serverModul==null){
+    alert("Az összes mező kitöltése kötelező!")
+  }
+}
+    </code></pre>
+  </td>
+  <td><pre><code>const osszPont=this.htmlModul
+    + this.bootstrapModul
+    + this.javaScriptModul + this.typeScriptModul
+    + this.angularModul + this.serverModul;
+
+
+  let ertekeles="";
+  if(osszPont(<)50){
+    ertekeles="Sikertelen vizsga";
+  }
+  else if(osszPont(<)59){
+    ertekeles="Sikeres vizsga(2-es)";
+  }
+  else if(osszPont(<)69){
+    ertekeles="Sikeres vizsga(3-es)";
+  }  else if(osszPont(<)79){
+    ertekeles="Sikeres vizsga(4-es)";
+  }
+  else{
+    ertekeles="Sikeres vizsga(5-ös)";
+  }
+
+    this.eredmenyek.push(`összpont: ${osszPont} -> ${ertekeles}`);}
+</code></pre></td>
+</tr>
+<tr>
+  <td><pre><code>elsoVizsgaltNap!:number;
+masodikVizsgaltNap!:number;
+harmadikVizsgaltNap!:number;
+
+aktualisRiadoSzint(){
+  if(this.elsoVizsgaltNap !=null &&
+  this.masodikVizsgaltNap!=null &&
+  this.harmadikVizsgaltNap!=null){
+    if(this.elsoVizsgaltNap>=27 &&
+    this.masodikVizsgaltNap>=27 && this.harmadikVizsgaltNap>=27){
+      return "3.szintű";
+    }
+    else if(this.elsoVizsgaltNap>=25 &&
+    this.masodikVizsgaltNap>=25 &&
+    this.harmadikVizsgaltNap>=25){
+      return "2.szintű";
+    }
+    else if(this.elsoVizsgaltNap>=25 ||
+    this.masodikVizsgaltNap>=25 ||
+    this.harmadikVizsgaltNap>=25){
+      return "1.szintű";
+    }
+    else{
+      return "0.szintű"
+    }
+  }
+  else{
+    return "hiányzó adat";}}</code></pre></td>
+  <td>
+<pre><code>eredmenyek:string[]=[];
+EredmenyMentes(){
+  if(this.elsoVizsgaltNap !=null ||
+  this.masodikVizsgaltNap!=null ||
+  this.harmadikVizsgaltNap!=null){
+    this.eredmenyek.push(`${this.elsoVizsgaltNap}, ${this.masodikVizsgaltNap},
+    ${this.harmadikVizsgaltNap} esetén
+    ${this.aktualisRiadoSzint()}
+    hőségriadó volt elrendelve!`)}</code></pre>
+</td>
+</tr>
 </table>
-
-
-
-
-<p class="cim">Űrlap mező:</p>
-<pre><code><div class="form-group">
-  <label for="elsoSzam">Első szám</label>
-<input type="number" id="elsoSzam" class="form-control" [(ngModel)]="szamEgy"></div>
-
-<button type="button" class="btn btn-dark w-100 my-2" (click)="EredmenyMentes()">Eredmény mentése</button>
-<h4>Korábbi műveletek:</h4>
-<ul&lt;
-<li *ngFor="let eredmeny of eredmenyek">
-        {{eredmeny}}
-    </li
-</ul></code></pre>
-
-
+<br>
 
 <h2>DOM feladatok:</h2>
 <pre><code>export class Objektumok {
@@ -1061,8 +1139,6 @@ KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret
 <h2>Szűrés:</h2>
 <input type="text" class="form-control mb-5" [(ngModel)]="kereso" placeholder="Keresés..."><!--SZŰRÉS MEZŐ-->
   //SZŰRÉS
-
-
     <pre><code>kereso!: string;//Szűrő mezőre hivatkozás
 
   szures(adatok: any): boolean {//Szűrési folyamat az adatszerkezetre
@@ -1095,11 +1171,15 @@ KiiR:{{interfaceElem.helyezes}}. helyezést ért el {{interfaceElem.csapat_meret
 
 <button class="btn btn-primary w-100 my-3" (click)="Mentes()">Adatok mentése-HTML</button>
 
+
   <pre><code>Mentes() {
     let objektum: utvonalak = new KekturaUtvonal(this.kezdoPontInput,
     this.vegPontInput, this.tavolsagInput, this.emelkedesInput, this.lejtesInput, this.pecsetInput);
     this.kekturaadatok.push(objektum);}
 </code></pre>
+<pre><code>  kezdoPontInput!: string;
+  vegPontInput!: string;
+  tavolsagInput!: string;</code></pre>
 
 <pre><code>interface FifaAdat {
   nev: string;
@@ -1113,12 +1193,13 @@ class FifaElem implements FifaAdat {
   helyezes: number;
   valtozas: number;
   pontszam: number;
+
   <!--Konstruktor: akkor fut le, amikor új "autót"-t hozunk létre-->
   constructor(nev: string, helyezes: number, valtozas: number, pontszam: number) {
     this.nev = nev; <!--beállítjuk az objektum tulajdonságát-->
     this.helyezes = helyezes;
     this.valtozas = valtozas;
-    this.pontszam = pontszam;}}</code></pre><!--páldányosítás: új objektum létrehozása az osztály alapján: let auto1 = new Auto("Toyota", 2020);-->
+    this.pontszam = Number(pontszam.toString().replace(",", "."));;}}</code></pre><!--páldányosítás: új objektum létrehozása az osztály alapján: let auto1 = new Auto("Toyota", 2020);-->
 
 </details>
 
@@ -1127,7 +1208,7 @@ class FifaElem implements FifaAdat {
   <summary>MongoDB</summary>
   <h2>MongoDB</h2>
 <ol>
-  <li>Lokális adatbázikezelő szoftver: A mongoDB Atlas(flehőszolgáltatás) a MongoDB hivatalos felhőalapú adatbázis-szolgáltatása, amely lehetővé teszi, hogy saját szerver üzemeltetése nélkül, egyszerűen kezeljünk adatbázisokat online</li>
+  <li>Lokális adatbázikezelő szoftver: A mongoDB Atlas(felhőszolgáltatás) a MongoDB hivatalos felhőalapú adatbázis-szolgáltatása, amely lehetővé teszi, hogy saját szerver üzemeltetése nélkül, egyszerűen kezeljünk adatbázisokat online</li>
   <li>NoSQL adatbázis: nem táblákba tárolja az adatokat,mint az SQL, hanem dokumentumokban(JSON szerű adatok).</li>
   <li>rugalmas: nem kell előre fix sémát meghatározni.</li>
   <li>Database(adatbázis)</li>
