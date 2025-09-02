@@ -332,7 +332,8 @@ Jelölőnyelv, nem programozási nyelv</li>
   <li>A JS dinamikus, gyengés típusos(nem kell megadni a típust) és főleg kliens oldali programozás nyelv. </li>
   <li>függvény paraméter:az érték, amivel a függvény dolgozik futása során, </li>
   <li>vezérlési szerkezetek: szekvencia: sorban egymás után || Szelekció: elágazás: egyszerű,összetett, több irányú && Iteráció: ciklus  </li>
-  <li>változó (létrehozása)deklarálás: változót létrehozunk majd értéket adunk--gyengén típusos--maga dönti el milyen típus. const: nem lehet változtatni. | var: veszélyes, bármikor újra feklarárható.</li>
+  <li>változó (létrehozása)deklarálás: változót létrehozunk majd értéket adunk--gyengén típusos--maga dönti el milyen típus. const: nem lehet változtatni. 
+	  | var: veszélyes, bármikor újra feklarárható.</li>
   <li>for ciklus: (<=) operátor 1-gyel több lefutást eredményez|| while(előltesztelós), Do-while(hátultesztelős), for(előírt lépésszámú)</li>
 </ul>
 
@@ -533,7 +534,8 @@ ErtekCsokkentesKiir(ErtekCsokkentesIndex);</code></pre>
 <pre><code>function <b>KarakterTabusito</b>(szoveg, betu) {
     return szoveg.replaceAll(betu, "");}</code></pre>
 
-<pre><code>function <b>Szovegvisszafele</b>(szoveg) {//karakterekre bontja:split(","),tömbbé alakítja.megfordítja(reserve).újrafűzi(join): let forditottSzoveg="";
+<pre><code>function <b>Szovegvisszafele</b>(szoveg) {//karakterekre bontja:split(","),
+	tömbbé alakítja.megfordítja(reserve).újrafűzi(join): let forditottSzoveg="";
  for(let i=szoveg.length-1; i>=0; i--){
   forditottSzoveg+=szoveg[i]; }
  return forditottSzoveg;}</code></pre>
@@ -613,7 +615,8 @@ console.log(fifaAdatok);
 function FifaAdatokKiir(megjelenitendoAdatok) {
     document.write("<table border='1'><caption>fifaAdatok</caption>")
     for (let i = 0; i < megjelenitendoAdatok.length; i++) {
-        document.write(`<tr><td>${megjelenitendoAdatok[i].nev}</td><td>${megjelenitendoAdatok[i].helyezes}</td><td>${megjelenitendoAdatok[i].valtozas}</td><td>${megjelenitendoAdatok[i].pontszam}</td></tr>`);
+        document.write(`<tr><td>${megjelenitendoAdatok[i].nev}</td><td>${megjelenitendoAdatok[i].helyezes}</td>
+		<td>${megjelenitendoAdatok[i].valtozas}</td><td>${megjelenitendoAdatok[i].pontszam}</td></tr>`);
     } document.write("</table>");
 }
 FifaAdatokKiir(fifaAdatok);</script>
@@ -1208,7 +1211,8 @@ class FifaElem implements FifaAdat {
   <summary>MongoDB</summary>
   <h2>MongoDB</h2>
 <ol>
-  <li>Lokális adatbázikezelő szoftver: A mongoDB Atlas(felhőszolgáltatás) a MongoDB hivatalos felhőalapú adatbázis-szolgáltatása, amely lehetővé teszi, hogy saját szerver üzemeltetése nélkül, egyszerűen kezeljünk adatbázisokat online</li>
+  <li>Lokális adatbázikezelő szoftver: A mongoDB Atlas(felhőszolgáltatás) a MongoDB hivatalos felhőalapú adatbázis-szolgáltatása, 
+	  amely lehetővé teszi, hogy saját szerver üzemeltetése nélkül, egyszerűen kezeljünk adatbázisokat online</li>
   <li>NoSQL adatbázis: nem táblákba tárolja az adatokat,mint az SQL, hanem dokumentumokban(JSON szerű adatok).</li>
   <li>rugalmas: nem kell előre fix sémát meghatározni.</li>
   <li>Database(adatbázis)</li>
